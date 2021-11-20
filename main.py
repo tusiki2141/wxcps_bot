@@ -1,9 +1,6 @@
 # UUID:683e40b5-237f-4dc4-bed8-3918c0309f69
 import os
-
-"""doc"""
-# pylint: disable=R0801
-import asyncio
+import asyncio, os
 from typing import List, Optional, Union
 
 from wechaty_puppet import FileBox  # type: ignore
@@ -31,5 +28,10 @@ class MyBot(Wechaty):
                 'u=1116676390,2305043183&fm=26&gp=0.jpg',
                 name='ding-dong.jpg')
             await conversation.say(file_box)
-os.environ['token']='puppet_paimon_fe638fc0-7efd-4a81-a195-a3d0400a2b93'
+
+os.environ['token']='683e40b5-237f-4dc4-bed8-3918c0309f69'
+os.environ['WECHATY_PUPPET_SERVICE_ENDPOINT'] = '192.168.1.224:9099'
 asyncio.run(MyBot().start())
+
+
+

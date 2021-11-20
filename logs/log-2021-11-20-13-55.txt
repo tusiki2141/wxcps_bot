@@ -1,0 +1,94 @@
+2021-11-20 13:55:11,547 - Wechaty - INFO - init_puppet_event_bridge() <<wechaty_puppet_service.puppet.PuppetService object at 0x0000013584116C10>>
+2021-11-20 13:55:11,548 - Wechaty - INFO - initPuppetEventBridge() puppet.on(dong) (listenerCount:1) registering...
+2021-11-20 13:55:11,548 - Wechaty - INFO - initPuppetEventBridge() puppet.on(error) (listenerCount:1) registering...
+2021-11-20 13:55:11,548 - Wechaty - INFO - initPuppetEventBridge() puppet.on(heart-beat) (listenerCount:1) registering...
+2021-11-20 13:55:11,549 - Wechaty - INFO - initPuppetEventBridge() puppet.on(ready) (listenerCount:1) registering...
+2021-11-20 13:55:11,549 - Wechaty - INFO - receive <reset> event <%s>
+2021-11-20 13:55:11,550 - Wechaty - INFO - initPuppetEventBridge() puppet.on(reset) (listenerCount:0) registering...
+2021-11-20 13:55:11,550 - Wechaty - INFO - initPuppetEventBridge() puppet.on(friendship) (listenerCount:1) registering...
+2021-11-20 13:55:11,550 - Wechaty - INFO - initPuppetEventBridge() puppet.on(login) (listenerCount:1) registering...
+2021-11-20 13:55:11,551 - Wechaty - INFO - initPuppetEventBridge() puppet.on(logout) (listenerCount:1) registering...
+2021-11-20 13:55:11,551 - Wechaty - INFO - initPuppetEventBridge() puppet.on(message) (listenerCount:1) registering...
+2021-11-20 13:55:11,551 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-invite) (listenerCount:1) registering...
+2021-11-20 13:55:11,552 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-join) (listenerCount:1) registering...
+2021-11-20 13:55:11,552 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-leave) (listenerCount:1) registering...
+2021-11-20 13:55:11,552 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-topic) (listenerCount:1) registering...
+2021-11-20 13:55:11,553 - Wechaty - INFO - initPuppetEventBridge() puppet.on(scan) (listenerCount:1) registering...
+2021-11-20 13:55:11,553 - Wechaty - INFO - starting puppet ...
+2021-11-20 13:55:11,553 - HostiePuppet - INFO - init puppet
+2021-11-20 13:55:11,556 - HostiePuppet - INFO - starting the puppet ...
+2021-11-20 13:55:16,482 - HostiePuppet - INFO - puppet has started ...
+2021-11-20 13:55:16,483 - HostiePuppet - INFO - listening the event from the puppet ...
+2021-11-20 13:55:16,521 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'Wechaty Puppet gRPC stream connect successfully'}>
+2021-11-20 13:55:16,522 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/gfAnSAOHpw==', 'status': 5}>
+2021-11-20 13:55:16,522 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Timeout: 5>, qrcode='https://login.weixin.qq.com/l/gfAnSAOHpw==', data=None)>
+2021-11-20 13:55:16,523 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/gfAnSAOHpw==', 'ScanStatus.Timeout', 'None']> <{}>
+2021-11-20 13:55:16,524 - Wechaty - ERROR - internal error <>
+2021-11-20 13:55:17,457 - HostiePuppet - DEBUG - receive heartbeat info <{'data': {'code': 0, 'url': 'https://login.weixin.qq.com/qrcode/AYDpnhbZ9w=='}, 'type': 'scan', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:55:17,458 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/AYDpnhbZ9w==', 'status': 2}>
+2021-11-20 13:55:17,459 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='https://login.weixin.qq.com/l/AYDpnhbZ9w==', data=None)>
+2021-11-20 13:55:17,512 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/https://login.weixin.qq.com/l/AYDpnhbZ9w==
+2021-11-20 13:55:17,512 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/AYDpnhbZ9w==', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-20 13:55:17,513 - Wechaty - ERROR - internal error <>
+2021-11-20 13:55:31,431 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:55:42,472 - HostiePuppet - DEBUG - receive heartbeat info <{'data': {'code': 408, 'url': 'https://login.weixin.qq.com/qrcode/AYDpnhbZ9w=='}, 'type': 'scan', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:55:42,473 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/AYDpnhbZ9w==', 'status': 5}>
+2021-11-20 13:55:42,474 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Timeout: 5>, qrcode='https://login.weixin.qq.com/l/AYDpnhbZ9w==', data=None)>
+2021-11-20 13:55:42,475 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/AYDpnhbZ9w==', 'ScanStatus.Timeout', 'None']> <{}>
+2021-11-20 13:55:42,476 - Wechaty - ERROR - internal error <>
+2021-11-20 13:55:46,434 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:56:01,433 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:56:16,438 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:56:22,504 - HostiePuppet - DEBUG - receive heartbeat info <{'data': {'code': 201, 'url': 'https://login.weixin.qq.com/qrcode/AYDpnhbZ9w=='}, 'type': 'scan', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:56:22,506 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/AYDpnhbZ9w==', 'status': 3}>
+2021-11-20 13:56:22,506 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Scanned: 3>, qrcode='https://login.weixin.qq.com/l/AYDpnhbZ9w==', data=None)>
+2021-11-20 13:56:22,507 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/AYDpnhbZ9w==', 'ScanStatus.Scanned', 'None']> <{}>
+2021-11-20 13:56:22,507 - Wechaty - ERROR - internal error <>
+2021-11-20 13:56:29,505 - HostiePuppet - DEBUG - receive heartbeat info <{'data': {'code': 200, 'url': 'https://login.weixin.qq.com/qrcode/AYDpnhbZ9w=='}, 'type': 'scan', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:56:29,506 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/AYDpnhbZ9w==', 'status': 4}>
+2021-11-20 13:56:29,507 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Confirmed: 4>, qrcode='https://login.weixin.qq.com/l/AYDpnhbZ9w==', data=None)>
+2021-11-20 13:56:29,507 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/AYDpnhbZ9w==', 'ScanStatus.Confirmed', 'None']> <{}>
+2021-11-20 13:56:29,508 - Wechaty - ERROR - internal error <>
+2021-11-20 13:56:31,440 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:56:31,616 - HostiePuppet - DEBUG - receive login info <{'contactId': '@b7c6ce7b9fff7d9669b3fb5bdcff9d81bba0189531cc4678fc84be71535188c9'}>
+2021-11-20 13:56:31,618 - wechaty.plugin - INFO - init the plugins ...
+2021-11-20 13:56:31,618 - Wechaty - INFO - receive <login> event <EventLoginPayload(contact_id='@b7c6ce7b9fff7d9669b3fb5bdcff9d81bba0189531cc4678fc84be71535188c9')>
+2021-11-20 13:56:31,689 - Contact - INFO - load contact <Contact <@b7c6ce7b9fff7d9669b3fb5bdcff9d81bba0189531cc4678fc84be71535188c9> <温暖的蛋挞>>
+2021-11-20 13:56:31,690 - Wechaty - DEBUG - emit() event <['Contact <@b7c6ce7b9fff7d9669b3fb5bdcff9d81bba0189531cc4678fc84be71535188c9> <温暖的蛋挞>']> <{}>
+2021-11-20 13:56:35,657 - HostiePuppet - DEBUG - receive ready info <{'data': 'stable'}>
+2021-11-20 13:56:35,657 - Wechaty - INFO - receive <ready> event <EventReadyPayload(data='stable')>
+2021-11-20 13:56:35,658 - Wechaty - DEBUG - emit() event <["EventReadyPayload(data='stable')"]> <{}>
+2021-11-20 13:56:36,614 - HostiePuppet - DEBUG - receive ready info <{'data': 'stable'}>
+2021-11-20 13:56:36,614 - Wechaty - INFO - receive <ready> event <EventReadyPayload(data='stable')>
+2021-11-20 13:56:36,616 - Wechaty - DEBUG - emit() event <["EventReadyPayload(data='stable')"]> <{}>
+2021-11-20 13:56:46,438 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:56:57,092 - HostiePuppet - DEBUG - receive message info <{'messageId': '7167418030014138672'}>
+2021-11-20 13:56:57,093 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='7167418030014138672', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 13:56:57,094 - Message - DEBUG - Message ready <Message <7167418030014138672> is not ready>
+2021-11-20 13:56:57,474 - Contact - INFO - load contact <Contact <@8b1ebdd2254c5b17fa04aaf9e5bb9b64> <俊杰Jacky🤪>>
+2021-11-20 13:56:57,476 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@8b1ebdd2254c5b17fa04aaf9e5bb9b64> <俊杰Jacky🤪>	ding>
+2021-11-20 13:56:57,477 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@8b1ebdd2254c5b17fa04aaf9e5bb9b64> <俊杰Jacky🤪>\tding']> <{}>
+2021-11-20 13:56:57,535 - HostiePuppet - DEBUG - receive message info <{'messageId': '16373878158080539'}>
+2021-11-20 13:56:57,536 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='16373878158080539', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 13:56:57,536 - Message - DEBUG - Message ready <Message <16373878158080539> is not ready>
+2021-11-20 13:56:57,828 - Wechaty - ERROR - internal error <>
+2021-11-20 13:56:57,987 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@b7c6ce7b9fff7d9669b3fb5bdcff9d81bba0189531cc4678fc84be71535188c9> <温暖的蛋挞>	dong>
+2021-11-20 13:56:57,988 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@b7c6ce7b9fff7d9669b3fb5bdcff9d81bba0189531cc4678fc84be71535188c9> <温暖的蛋挞>\tdong']> <{}>
+2021-11-20 13:57:01,439 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:57:16,442 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:57:31,439 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:57:46,440 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:57:59,272 - HostiePuppet - DEBUG - receive message info <{'messageId': '5310824509134954351'}>
+2021-11-20 13:57:59,272 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='5310824509134954351', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 13:57:59,273 - Message - DEBUG - Message ready <Message <5310824509134954351> is not ready>
+2021-11-20 13:57:59,410 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@8b1ebdd2254c5b17fa04aaf9e5bb9b64> <俊杰Jacky🤪>	ding>
+2021-11-20 13:57:59,412 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@8b1ebdd2254c5b17fa04aaf9e5bb9b64> <俊杰Jacky🤪>\tding']> <{}>
+2021-11-20 13:57:59,455 - HostiePuppet - DEBUG - receive message info <{'messageId': '16373878777380517'}>
+2021-11-20 13:57:59,455 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='16373878777380517', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 13:57:59,456 - Message - DEBUG - Message ready <Message <16373878777380517> is not ready>
+2021-11-20 13:57:59,484 - Wechaty - ERROR - internal error <>
+2021-11-20 13:57:59,787 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@b7c6ce7b9fff7d9669b3fb5bdcff9d81bba0189531cc4678fc84be71535188c9> <温暖的蛋挞>	dong>
+2021-11-20 13:57:59,788 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@b7c6ce7b9fff7d9669b3fb5bdcff9d81bba0189531cc4678fc84be71535188c9> <温暖的蛋挞>\tdong']> <{}>
+2021-11-20 13:58:01,443 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:58:16,441 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 13:58:31,447 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
