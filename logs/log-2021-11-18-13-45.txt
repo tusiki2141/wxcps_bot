@@ -1,0 +1,114 @@
+2021-11-18 13:45:45,436 - Wechaty - INFO - on() listen event <scan> with <<function main.<locals>.<lambda> at 0x000001657A7BADC0>>
+2021-11-18 13:45:45,436 - Wechaty - DEBUG - emit() event <['scan', '<function main.<locals>.<lambda> at 0x000001657A7BADC0>']> <{}>
+2021-11-18 13:45:45,436 - Wechaty - INFO - on() listen event <login> with <<function main.<locals>.<lambda> at 0x000001657A7BAEE0>>
+2021-11-18 13:45:45,437 - Wechaty - DEBUG - emit() event <['login', '<function main.<locals>.<lambda> at 0x000001657A7BAEE0>']> <{}>
+2021-11-18 13:45:45,437 - Wechaty - INFO - on() listen event <message> with <<function main.<locals>.<lambda> at 0x000001657A7BAF70>>
+2021-11-18 13:45:45,437 - Wechaty - DEBUG - emit() event <['message', '<function main.<locals>.<lambda> at 0x000001657A7BAF70>']> <{}>
+2021-11-18 13:45:45,474 - Wechaty - INFO - init_puppet_event_bridge() <<wechaty_puppet_service.puppet.PuppetService object at 0x000001657A7B9760>>
+2021-11-18 13:45:45,474 - Wechaty - INFO - initPuppetEventBridge() puppet.on(dong) (listenerCount:1) registering...
+2021-11-18 13:45:45,474 - Wechaty - INFO - initPuppetEventBridge() puppet.on(error) (listenerCount:1) registering...
+2021-11-18 13:45:45,474 - Wechaty - INFO - initPuppetEventBridge() puppet.on(heart-beat) (listenerCount:1) registering...
+2021-11-18 13:45:45,474 - Wechaty - INFO - initPuppetEventBridge() puppet.on(ready) (listenerCount:1) registering...
+2021-11-18 13:45:45,474 - Wechaty - INFO - receive <reset> event <%s>
+2021-11-18 13:45:45,474 - Wechaty - INFO - initPuppetEventBridge() puppet.on(reset) (listenerCount:0) registering...
+2021-11-18 13:45:45,474 - Wechaty - INFO - initPuppetEventBridge() puppet.on(friendship) (listenerCount:1) registering...
+2021-11-18 13:45:45,474 - Wechaty - INFO - initPuppetEventBridge() puppet.on(login) (listenerCount:1) registering...
+2021-11-18 13:45:45,475 - Wechaty - INFO - initPuppetEventBridge() puppet.on(logout) (listenerCount:1) registering...
+2021-11-18 13:45:45,475 - Wechaty - INFO - initPuppetEventBridge() puppet.on(message) (listenerCount:1) registering...
+2021-11-18 13:45:45,475 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-invite) (listenerCount:1) registering...
+2021-11-18 13:45:45,475 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-join) (listenerCount:1) registering...
+2021-11-18 13:45:45,475 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-leave) (listenerCount:1) registering...
+2021-11-18 13:45:45,475 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-topic) (listenerCount:1) registering...
+2021-11-18 13:45:45,475 - Wechaty - INFO - initPuppetEventBridge() puppet.on(scan) (listenerCount:1) registering...
+2021-11-18 13:45:45,475 - Wechaty - INFO - starting puppet ...
+2021-11-18 13:45:45,475 - HostiePuppet - INFO - init puppet
+2021-11-18 13:45:45,475 - HostiePuppet - INFO - There is no endpoint in cache, trying to fetch endpoint with token.
+2021-11-18 13:45:49,734 - HostiePuppet - DEBUG - get puppet ip address : <{'host': '120.55.60.194', 'ip': '120.55.60.194', 'port': 7777}>
+2021-11-18 13:45:49,793 - HostiePuppet - INFO - starting the puppet ...
+2021-11-18 13:45:49,974 - HostiePuppet - INFO - puppet has started ...
+2021-11-18 13:45:49,975 - HostiePuppet - INFO - listening the event from the puppet ...
+2021-11-18 13:45:53,798 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:45:53,799 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:45:53,842 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:45:53,842 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:45:53,842 - Wechaty - ERROR - internal error <>
+2021-11-18 13:45:58,896 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:45:58,896 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:45:58,908 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:45:58,908 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:45:58,909 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:03,901 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:03,901 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:03,945 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:03,945 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:03,945 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:08,913 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:08,913 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:08,953 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:08,953 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:08,954 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:13,912 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:13,913 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:13,950 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:13,950 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:13,950 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:18,890 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:18,890 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:18,917 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:18,917 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:18,918 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:23,908 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:23,908 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:23,920 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:23,920 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:23,920 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:28,910 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:28,911 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:28,945 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:28,945 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:28,945 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:33,928 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:33,929 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:33,962 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:33,962 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:33,962 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:38,906 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:38,906 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:38,934 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:38,934 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:38,934 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:43,900 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:43,901 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:43,926 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:43,926 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:43,926 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:48,898 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:48,898 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:48,929 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:48,929 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:48,930 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:53,903 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:53,903 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:53,916 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:53,916 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:53,916 - Wechaty - ERROR - internal error <>
+2021-11-18 13:46:58,921 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:46:58,922 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:46:58,965 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:46:58,965 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:46:58,965 - Wechaty - ERROR - internal error <>
+2021-11-18 13:47:03,906 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:47:03,906 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:47:03,919 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:47:03,919 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:47:03,919 - Wechaty - ERROR - internal error <>
+2021-11-18 13:47:08,904 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:47:08,904 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:47:08,939 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:47:08,939 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:47:08,939 - Wechaty - ERROR - internal error <>
+2021-11-18 13:47:13,951 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'status': 2}>
+2021-11-18 13:47:13,951 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', data=None)>
+2021-11-18 13:47:13,977 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD
+2021-11-18 13:47:13,978 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/4-gBdsSbjpICHB3d_zWD', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:47:13,978 - Wechaty - ERROR - internal error <>

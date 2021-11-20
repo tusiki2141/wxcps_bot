@@ -1,0 +1,63 @@
+2021-11-18 13:55:01,269 - Wechaty - INFO - init_puppet_event_bridge() <<wechaty_puppet_service.puppet.PuppetService object at 0x000001DFEBC376D0>>
+2021-11-18 13:55:01,269 - Wechaty - INFO - initPuppetEventBridge() puppet.on(dong) (listenerCount:1) registering...
+2021-11-18 13:55:01,269 - Wechaty - INFO - initPuppetEventBridge() puppet.on(error) (listenerCount:1) registering...
+2021-11-18 13:55:01,269 - Wechaty - INFO - initPuppetEventBridge() puppet.on(heart-beat) (listenerCount:1) registering...
+2021-11-18 13:55:01,269 - Wechaty - INFO - initPuppetEventBridge() puppet.on(ready) (listenerCount:1) registering...
+2021-11-18 13:55:01,270 - Wechaty - INFO - receive <reset> event <%s>
+2021-11-18 13:55:01,270 - Wechaty - INFO - initPuppetEventBridge() puppet.on(reset) (listenerCount:0) registering...
+2021-11-18 13:55:01,270 - Wechaty - INFO - initPuppetEventBridge() puppet.on(friendship) (listenerCount:1) registering...
+2021-11-18 13:55:01,270 - Wechaty - INFO - initPuppetEventBridge() puppet.on(login) (listenerCount:1) registering...
+2021-11-18 13:55:01,270 - Wechaty - INFO - initPuppetEventBridge() puppet.on(logout) (listenerCount:1) registering...
+2021-11-18 13:55:01,270 - Wechaty - INFO - initPuppetEventBridge() puppet.on(message) (listenerCount:1) registering...
+2021-11-18 13:55:01,270 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-invite) (listenerCount:1) registering...
+2021-11-18 13:55:01,271 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-join) (listenerCount:1) registering...
+2021-11-18 13:55:01,271 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-leave) (listenerCount:1) registering...
+2021-11-18 13:55:01,271 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-topic) (listenerCount:1) registering...
+2021-11-18 13:55:01,271 - Wechaty - INFO - initPuppetEventBridge() puppet.on(scan) (listenerCount:1) registering...
+2021-11-18 13:55:01,271 - Wechaty - INFO - starting puppet ...
+2021-11-18 13:55:01,271 - HostiePuppet - INFO - init puppet
+2021-11-18 13:55:01,271 - HostiePuppet - INFO - There is no endpoint in cache, trying to fetch endpoint with token.
+2021-11-18 13:55:15,163 - HostiePuppet - DEBUG - get puppet ip address : <{'host': '120.55.60.194', 'ip': '120.55.60.194', 'port': 7777}>
+2021-11-18 13:55:15,229 - HostiePuppet - INFO - starting the puppet ...
+2021-11-18 13:55:15,474 - HostiePuppet - INFO - puppet has started ...
+2021-11-18 13:55:15,474 - HostiePuppet - INFO - listening the event from the puppet ...
+2021-11-18 13:55:15,536 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', 'status': 2}>
+2021-11-18 13:55:15,536 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', data=None)>
+2021-11-18 13:55:15,568 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea
+2021-11-18 13:55:15,568 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:55:15,569 - Wechaty - ERROR - internal error <'MyBot' object has no attribute 'contact_id'>
+2021-11-18 13:55:20,646 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', 'status': 2}>
+2021-11-18 13:55:20,646 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', data=None)>
+2021-11-18 13:55:20,687 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea
+2021-11-18 13:55:20,687 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:55:20,687 - Wechaty - ERROR - internal error <'MyBot' object has no attribute 'contact_id'>
+2021-11-18 13:55:25,649 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', 'status': 2}>
+2021-11-18 13:55:25,649 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', data=None)>
+2021-11-18 13:55:25,659 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea
+2021-11-18 13:55:25,660 - Wechaty - DEBUG - emit() event <['http://weixin.qq.com/x/I4oxKdBzQNSKBboYkiea', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-18 13:55:25,660 - Wechaty - ERROR - internal error <'MyBot' object has no attribute 'contact_id'>
+2021-11-18 13:55:30,640 - HostiePuppet - DEBUG - receive scan info <{'data': '{"headImageUrl":"http://wx.qlogo.cn/mmhead/ver_1/r5icAq9mqJKA5OPcAWEicicAKPibMGGR8saPGzsCcCyePLialmYz6YpZFds2uEJwl80QLe84D7fRIhzTO0ibiaAgicib6WmuvAYjuevwKlibauvXycMYY/0","nickName":"温暖的蛋挞","status":"Scanned"}', 'status': 3}>
+2021-11-18 13:55:30,642 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Scanned: 3>, qrcode=None, data='{"headImageUrl":"http://wx.qlogo.cn/mmhead/ver_1/r5icAq9mqJKA5OPcAWEicicAKPibMGGR8saPGzsCcCyePLialmYz6YpZFds2uEJwl80QLe84D7fRIhzTO0ibiaAgicib6WmuvAYjuevwKlibauvXycMYY/0","nickName":"温暖的蛋挞","status":"Scanned"}')>
+2021-11-18 13:55:30,643 - Wechaty - DEBUG - emit() event <['', 'ScanStatus.Scanned', '{"headImageUrl":"http://wx.qlogo.cn/mmhead/ver_1/r5icAq9mqJKA5OPcAWEicicAKPibMGGR8saPGzsCcCyePLialmYz6YpZFds2uEJwl80QLe84D7fRIhzTO0ibiaAgicib6WmuvAYjuevwKlibauvXycMYY/0","nickName":"温暖的蛋挞","status":"Scanned"}']> <{}>
+2021-11-18 13:55:30,643 - Wechaty - ERROR - internal error <'MyBot' object has no attribute 'contact_id'>
+2021-11-18 13:55:46,646 - HostiePuppet - DEBUG - receive login info <{'contactId': 'wxid_3bazvnbmg15322'}>
+2021-11-18 13:55:46,647 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat:your token will be expired at 2021-11-25T13:36:26.000+08:00'}>
+2021-11-18 13:55:46,647 - wechaty.plugin - INFO - init the plugins ...
+2021-11-18 13:55:46,648 - Wechaty - INFO - receive <login> event <EventLoginPayload(contact_id='wxid_3bazvnbmg15322')>
+2021-11-18 13:55:46,652 - HostiePuppet - DEBUG - receive ready info <{'data': 'ready'}>
+2021-11-18 13:55:46,653 - Wechaty - INFO - receive <ready> event <EventReadyPayload(data='ready')>
+2021-11-18 13:55:46,653 - Wechaty - DEBUG - emit() event <["EventReadyPayload(data='ready')"]> <{}>
+2021-11-18 13:55:46,718 - Contact - INFO - load contact <Contact <wxid_3bazvnbmg15322> <温暖的蛋挞>>
+2021-11-18 13:55:46,719 - Wechaty - DEBUG - emit() event <['Contact <wxid_3bazvnbmg15322> <温暖的蛋挞>']> <{}>
+2021-11-18 13:55:46,762 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat:your token will be expired at 2021-11-25T13:36:26.000+08:00'}>
+2021-11-18 13:55:48,955 - HostiePuppet - DEBUG - receive message info <{'messageId': '050142240506caa224679a73e3'}>
+2021-11-18 13:55:48,955 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='050142240506caa224679a73e3', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-18 13:55:48,956 - Message - DEBUG - Message ready <Message <050142240506caa224679a73e3> is not ready>
+2021-11-18 13:55:49,019 - Wechaty - INFO - receive message <Message#message_type_unspecified[🗣 Contact <wxid_3bazvnbmg15322> <温暖的蛋挞>>
+2021-11-18 13:55:49,020 - Wechaty - DEBUG - emit() event <['Message#message_type_unspecified[🗣 Contact <wxid_3bazvnbmg15322> <温暖的蛋挞>']> <{}>
+2021-11-18 13:55:50,850 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat:your token will be expired at 2021-11-25T13:36:26.000+08:00'}>
+2021-11-18 13:55:52,812 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat:your token will be expired at 2021-11-25T13:36:26.000+08:00'}>
+2021-11-18 13:55:53,795 - HostiePuppet - DEBUG - receive logout info <{'contactId': 'wxid_3bazvnbmg15322', 'data': 'logout called'}>
+2021-11-18 13:55:53,796 - Wechaty - INFO - receive <logout> event <EventLogoutPayload(contact_id='wxid_3bazvnbmg15322', data='logout called')>
+2021-11-18 13:55:53,796 - Wechaty - DEBUG - emit() event <['Contact <wxid_3bazvnbmg15322> <温暖的蛋挞>']> <{}>
+2021-11-18 13:55:53,797 - Wechaty - DEBUG - bot tick <2021-11-18 13:55:53.797617>
