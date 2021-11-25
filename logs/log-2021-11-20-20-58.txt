@@ -1,0 +1,194 @@
+2021-11-20 20:58:41,719 - Wechaty - INFO - init_puppet_event_bridge() <<wechaty_puppet_service.puppet.PuppetService object at 0x0000012CB533FD30>>
+2021-11-20 20:58:41,719 - Wechaty - INFO - initPuppetEventBridge() puppet.on(dong) (listenerCount:1) registering...
+2021-11-20 20:58:41,720 - Wechaty - INFO - initPuppetEventBridge() puppet.on(error) (listenerCount:1) registering...
+2021-11-20 20:58:41,720 - Wechaty - INFO - initPuppetEventBridge() puppet.on(heart-beat) (listenerCount:1) registering...
+2021-11-20 20:58:41,720 - Wechaty - INFO - initPuppetEventBridge() puppet.on(ready) (listenerCount:1) registering...
+2021-11-20 20:58:41,721 - Wechaty - INFO - receive <reset> event <%s>
+2021-11-20 20:58:41,721 - Wechaty - INFO - initPuppetEventBridge() puppet.on(reset) (listenerCount:0) registering...
+2021-11-20 20:58:41,722 - Wechaty - INFO - initPuppetEventBridge() puppet.on(friendship) (listenerCount:1) registering...
+2021-11-20 20:58:41,722 - Wechaty - INFO - initPuppetEventBridge() puppet.on(login) (listenerCount:1) registering...
+2021-11-20 20:58:41,722 - Wechaty - INFO - initPuppetEventBridge() puppet.on(logout) (listenerCount:1) registering...
+2021-11-20 20:58:41,723 - Wechaty - INFO - initPuppetEventBridge() puppet.on(message) (listenerCount:1) registering...
+2021-11-20 20:58:41,723 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-invite) (listenerCount:1) registering...
+2021-11-20 20:58:41,723 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-join) (listenerCount:1) registering...
+2021-11-20 20:58:41,724 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-leave) (listenerCount:1) registering...
+2021-11-20 20:58:41,724 - Wechaty - INFO - initPuppetEventBridge() puppet.on(room-topic) (listenerCount:1) registering...
+2021-11-20 20:58:41,724 - Wechaty - INFO - initPuppetEventBridge() puppet.on(scan) (listenerCount:1) registering...
+2021-11-20 20:58:41,725 - Wechaty - INFO - starting puppet ...
+2021-11-20 20:58:41,725 - HostiePuppet - INFO - init puppet
+2021-11-20 20:58:41,728 - HostiePuppet - INFO - starting the puppet ...
+2021-11-20 20:58:46,858 - HostiePuppet - INFO - puppet has started ...
+2021-11-20 20:58:46,858 - HostiePuppet - INFO - listening the event from the puppet ...
+2021-11-20 20:58:46,894 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'Wechaty Puppet gRPC stream connect successfully'}>
+2021-11-20 20:58:46,895 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/IaojXeBGVA==', 'status': 5}>
+2021-11-20 20:58:46,896 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Timeout: 5>, qrcode='https://login.weixin.qq.com/l/IaojXeBGVA==', data=None)>
+2021-11-20 20:58:46,897 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/IaojXeBGVA==', 'ScanStatus.Timeout', 'None']> <{}>
+2021-11-20 20:58:46,897 - Wechaty - ERROR - internal error <>
+2021-11-20 20:58:47,831 - HostiePuppet - DEBUG - receive heartbeat info <{'data': {'code': 0, 'url': 'https://login.weixin.qq.com/qrcode/AbAM9s9Rkg=='}, 'type': 'scan', 'timeoutMilliseconds': 60000}>
+2021-11-20 20:58:47,832 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/AbAM9s9Rkg==', 'status': 2}>
+2021-11-20 20:58:47,833 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Waiting: 2>, qrcode='https://login.weixin.qq.com/l/AbAM9s9Rkg==', data=None)>
+2021-11-20 20:58:47,882 - Wechaty - INFO - or you can scan qrcode from: https://wechaty.js.org/qrcode/https://login.weixin.qq.com/l/AbAM9s9Rkg==
+2021-11-20 20:58:47,882 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/AbAM9s9Rkg==', 'ScanStatus.Waiting', 'None']> <{}>
+2021-11-20 20:58:47,883 - Wechaty - ERROR - internal error <>
+2021-11-20 20:59:01,805 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 20:59:08,840 - HostiePuppet - DEBUG - receive heartbeat info <{'data': {'code': 201, 'url': 'https://login.weixin.qq.com/qrcode/AbAM9s9Rkg=='}, 'type': 'scan', 'timeoutMilliseconds': 60000}>
+2021-11-20 20:59:08,843 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/AbAM9s9Rkg==', 'status': 3}>
+2021-11-20 20:59:08,844 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Scanned: 3>, qrcode='https://login.weixin.qq.com/l/AbAM9s9Rkg==', data=None)>
+2021-11-20 20:59:08,845 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/AbAM9s9Rkg==', 'ScanStatus.Scanned', 'None']> <{}>
+2021-11-20 20:59:08,846 - Wechaty - ERROR - internal error <>
+2021-11-20 20:59:12,845 - HostiePuppet - DEBUG - receive heartbeat info <{'data': {'code': 200, 'url': 'https://login.weixin.qq.com/qrcode/AbAM9s9Rkg=='}, 'type': 'scan', 'timeoutMilliseconds': 60000}>
+2021-11-20 20:59:12,846 - HostiePuppet - DEBUG - receive scan info <{'qrcode': 'https://login.weixin.qq.com/l/AbAM9s9Rkg==', 'status': 4}>
+2021-11-20 20:59:12,847 - Wechaty - INFO - receive <scan> event <EventScanPayload(status=<ScanStatus.Confirmed: 4>, qrcode='https://login.weixin.qq.com/l/AbAM9s9Rkg==', data=None)>
+2021-11-20 20:59:12,848 - Wechaty - DEBUG - emit() event <['https://login.weixin.qq.com/l/AbAM9s9Rkg==', 'ScanStatus.Confirmed', 'None']> <{}>
+2021-11-20 20:59:12,849 - Wechaty - ERROR - internal error <>
+2021-11-20 20:59:14,973 - HostiePuppet - DEBUG - receive login info <{'contactId': '@506d3a5da19af14ef3b0ed6734e8b367e0b45025088613d2a6d6c9486545118b'}>
+2021-11-20 20:59:14,973 - wechaty.plugin - INFO - init the plugins ...
+2021-11-20 20:59:14,974 - Wechaty - INFO - receive <login> event <EventLoginPayload(contact_id='@506d3a5da19af14ef3b0ed6734e8b367e0b45025088613d2a6d6c9486545118b')>
+2021-11-20 20:59:15,387 - Contact - INFO - load contact <Contact <@506d3a5da19af14ef3b0ed6734e8b367e0b45025088613d2a6d6c9486545118b> <温暖的蛋挞>>
+2021-11-20 20:59:15,388 - Wechaty - DEBUG - emit() event <['Contact <@506d3a5da19af14ef3b0ed6734e8b367e0b45025088613d2a6d6c9486545118b> <温暖的蛋挞>']> <{}>
+2021-11-20 20:59:16,804 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 20:59:18,990 - HostiePuppet - DEBUG - receive ready info <{'data': 'stable'}>
+2021-11-20 20:59:18,991 - Wechaty - INFO - receive <ready> event <EventReadyPayload(data='stable')>
+2021-11-20 20:59:18,992 - Wechaty - DEBUG - emit() event <["EventReadyPayload(data='stable')"]> <{}>
+2021-11-20 20:59:19,965 - HostiePuppet - DEBUG - receive ready info <{'data': 'stable'}>
+2021-11-20 20:59:19,965 - Wechaty - INFO - receive <ready> event <EventReadyPayload(data='stable')>
+2021-11-20 20:59:19,966 - Wechaty - DEBUG - emit() event <["EventReadyPayload(data='stable')"]> <{}>
+2021-11-20 20:59:31,812 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 20:59:46,809 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:00:01,813 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:00:16,805 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:00:31,807 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:00:46,811 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:01:01,825 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:01:16,811 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:01:31,813 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:01:38,716 - HostiePuppet - DEBUG - receive message info <{'messageId': '3801185523927978165'}>
+2021-11-20 21:01:38,717 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='3801185523927978165', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:01:38,717 - Message - DEBUG - Message ready <Message <3801185523927978165> is not ready>
+2021-11-20 21:01:45,600 - Contact - INFO - load contact <Contact <@8e060f380e6f848da3454ad3fdde662038ea53a23a0cd7e11c33da821e5db476> <十年。>>
+2021-11-20 21:01:46,969 - HostiePuppet - DEBUG - receive message info <{'messageId': '6698856974774350544'}>
+2021-11-20 21:01:46,969 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='6698856974774350544', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:01:46,970 - Message - DEBUG - Message ready <Message <6698856974774350544> is not ready>
+2021-11-20 21:01:47,144 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:01:47,190 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@8e060f380e6f848da3454ad3fdde662038ea53a23a0cd7e11c33da821e5db476> <十年。>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]	模块是哪一个？>
+2021-11-20 21:01:47,192 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@8e060f380e6f848da3454ad3fdde662038ea53a23a0cd7e11c33da821e5db476> <十年。>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]\t模块是哪一个？']> <{}>
+2021-11-20 21:01:47,731 - Contact - INFO - load contact <Contact <@53614381f97ce22a0b5b3e428ded82705449ae3d50437100181301496c92769b> <十年>>
+2021-11-20 21:01:47,743 - Contact - INFO - load contact <Contact <@2618ffb22dfc6b3f169bae783d4df36f06d2376e1746e4468779bbfab738498c> <༺ༀ༂࿅࿆小哥哥࿅࿆༂ༀ༻>>
+2021-11-20 21:01:47,754 - Contact - INFO - load contact <Contact <@ba43020570b1c6924e69ed61c2f1eb73> <@ba43020570b1c6924e69ed61c2f1eb73>>
+2021-11-20 21:01:47,763 - Contact - INFO - load contact <Contact <@3bf1ebb2865ea5fb0fcbc37d0ff0186a4d8c2b1b15f4d4895caf10cb647f9eaf> <Mr.Bean>>
+2021-11-20 21:01:47,775 - Contact - INFO - load contact <Contact <@214aa3fc034ab3962f3b14d56bb5675f> <ab>>
+2021-11-20 21:01:47,789 - Contact - INFO - load contact <Contact <@acd0fada1fe88505a4bdc24cf98ddf41cd25dcbf04078093d9de51eb8f51eae0> <Mr.jun哥>>
+2021-11-20 21:01:47,810 - Contact - INFO - load contact <Contact <@68627ef213c6c99d4d69fbe0ead919fa> <搬货小哥>>
+2021-11-20 21:01:47,821 - Contact - INFO - load contact <Contact <@0e4d45a15430261b279cc0cdd42334d2> <夜鹰>>
+2021-11-20 21:01:47,836 - Contact - INFO - load contact <Contact <@d2fc28b616c66295b3458b6ed7c75a9b8ff80cd476357bcd9f4e44c87663e1bd> <ㅤ>>
+2021-11-20 21:01:47,848 - Contact - INFO - load contact <Contact <@906716c5dd8c7922ce98e361c7c3b386> <Joker195.6>>
+2021-11-20 21:01:47,858 - Contact - INFO - load contact <Contact <@879874d95f419a29d0b53892a8782cf5> < >>
+2021-11-20 21:01:47,866 - Contact - INFO - load contact <Contact <@90e1befbeeaf1d304ad195900377b732> <天佑辛集゛>>
+2021-11-20 21:01:47,876 - Contact - INFO - load contact <Contact <@c761d49e92e9355ac0d7b7d8b1d9e23a05cde04778c60f1220f1363fc2ae026f> <Slash斜杠青年จุ๊บ>>
+2021-11-20 21:01:47,885 - Contact - INFO - load contact <Contact <@58ced4b366e5c14de23f89c850cdd5ee1e89d69f8e77e5adfebf503019832319> <戏梦>>
+2021-11-20 21:01:47,894 - Contact - INFO - load contact <Contact <@f5c6c698cb42408f03a01e061a3dc0f8> <噶的爆克😈>>
+2021-11-20 21:01:47,903 - Contact - INFO - load contact <Contact <@af12e23e379cc21605abb3d31e74644a249228a54f02d9c2ac502a217e6a5594> <明月>>
+2021-11-20 21:01:47,912 - Contact - INFO - load contact <Contact <@cc58698ca5db6b9abe48f866cc864621> <A     郎牌特曲13382467001>>
+2021-11-20 21:01:47,919 - Contact - INFO - load contact <Contact <@a70022a3743156131a210af30c6b9d3c7c80dfe428e42b35af3af87559b305aa> <董二千先生>>
+2021-11-20 21:01:47,927 - Contact - INFO - load contact <Contact <@d422ff43a21a46e499bb89a1e37e5abcdedd37473a1b16cc5bf27a66c8bd41f0> <风口上的猪>>
+2021-11-20 21:01:47,935 - Contact - INFO - load contact <Contact <@6b21d7e7a13f4ab2e9b92ddef4eb7e6c> <@6b21d7e7a13f4ab2e9b92ddef4eb7e6c>>
+2021-11-20 21:01:47,944 - Contact - INFO - load contact <Contact <@d5a1e56f9871bb61fc0d68d61ca96dce> <至尊网络>>
+2021-11-20 21:01:47,955 - Contact - INFO - load contact <Contact <@685e906414de237c0ae3fc1269a617557321dca05b7860203ef1097f20e8f544> <木子>>
+2021-11-20 21:01:47,966 - Contact - INFO - load contact <Contact <@cb339f3ed9bbe1e9a224d7a85643599921d46537986de7da3a96eb9580e68f19> <空调 批发>>
+2021-11-20 21:01:47,976 - Contact - INFO - load contact <Contact <@cc07d9315292ef013ba43a75243f7c11cb6ac7923c533c1a00cd41bdbda06cab> <思源>>
+2021-11-20 21:01:47,986 - Contact - INFO - load contact <Contact <@ccc3c0bc075791e78185a3b49966f4305c6541b14f6c4440991fc8cf75605b3b> <K>>
+2021-11-20 21:01:47,999 - Contact - INFO - load contact <Contact <@f6ee0cc35e7a77f8a9f0f2d6792f4b3e4f85809dd9b9547872771f206dcfb01e> <范范>>
+2021-11-20 21:01:48,013 - Contact - INFO - load contact <Contact <@867b2c0aa1b4c2e1875a7ac233804b53ba28f8fac805fb19c0f28c8b62eeb84d> <半下涯>>
+2021-11-20 21:01:48,024 - Contact - INFO - load contact <Contact <@b982d89bdbac8f822af1c8dcfc3ce97ffde7ebc81456222eff7a0ab7d754189a> <绅士>>
+2021-11-20 21:01:48,032 - Contact - INFO - load contact <Contact <@4fcabc64c0021576c138c7a84d71f76329b2c0947f39a8a6ec2f9bff082bcea9> <Tribunny>>
+2021-11-20 21:01:48,040 - Contact - INFO - load contact <Contact <@4d463eb6548ad61d399bd394b087206e21133ddb3966e33fafbdc52f613902be> <伟奇>>
+2021-11-20 21:01:48,047 - Contact - INFO - load contact <Contact <@5c8708c69b62fc929fe397240a2231e6> <养了只大白菜>>
+2021-11-20 21:01:48,055 - Contact - INFO - load contact <Contact <@6d105d06ffc5a40808fec0d1aabb860eb3da10b7529f252c28dcd69548ef3dbb> < 旧梦>>
+2021-11-20 21:01:48,063 - Contact - INFO - load contact <Contact <@60da17ba59ca060270fbbdd449e9c29a> <罗畅>>
+2021-11-20 21:01:48,071 - Contact - INFO - load contact <Contact <@aeb5b3202edcd2fed580bce114553c01> <lgl>>
+2021-11-20 21:01:48,078 - Contact - INFO - load contact <Contact <@8ab14501b9ac822564f86464edb312e9> <沙灰>>
+2021-11-20 21:01:48,086 - Contact - INFO - load contact <Contact <@7a18a56fbb5c0dc05e7c227195c2bdf9> <Simple>>
+2021-11-20 21:01:48,095 - Contact - INFO - load contact <Contact <@5c66e276f44f11e0e2a4922b1e3b37bb2cbc0d099a04d0b348b921e59bed8e9f> <空白🧐>>
+2021-11-20 21:01:48,105 - Contact - INFO - load contact <Contact <@84bfb7147aa0ed36d97c078b121992d9> <张->>
+2021-11-20 21:01:48,115 - Contact - INFO - load contact <Contact <@5950165aad646a9666fffcaf22067f25> <蝙蝠>>
+2021-11-20 21:01:48,124 - Contact - INFO - load contact <Contact <@0af91b30963d4e1018be38eabf2cc1ae36ade04aa8b6ea04b6f54abb91e55523> <728>>
+2021-11-20 21:01:48,134 - Contact - INFO - load contact <Contact <@80464b2ba3169320b2adaa1627d1b953ee39224373bc80920aedacad358847b4> <@灿@灿>>
+2021-11-20 21:01:48,146 - Contact - INFO - load contact <Contact <@20e9a95a7872ee9ed5adbccc4c38572ade18493056ca8ebb88dd51757502da47> <85岁带病上网>>
+2021-11-20 21:01:48,154 - Contact - INFO - load contact <Contact <@05b19662c4b21867c07596537e523057> <孙俊>>
+2021-11-20 21:01:48,162 - Contact - INFO - load contact <Contact <@232d414ca85e09a83394cabec995f107> <。>>
+2021-11-20 21:01:48,169 - Contact - INFO - load contact <Contact <@88bd597f059fb1cd60689cc3647478bb> <野无趣>>
+2021-11-20 21:01:48,176 - Contact - INFO - load contact <Contact <@cf09cc24538cdb6d4147158243758d61b271312c0ab6205bb34998d7b3ff0b00> <韦微信z>>
+2021-11-20 21:01:48,184 - Contact - INFO - load contact <Contact <@e0da5a5dee4806b2eca919d49640a6d0> <C_T.Jong>>
+2021-11-20 21:01:48,194 - Contact - INFO - load contact <Contact <@0ab9b9adad78a2d95f13efb1645a67e967c70f2df32a55b1c32071544640c712> <-  落花殇倾城泪   、>>
+2021-11-20 21:01:48,203 - Contact - INFO - load contact <Contact <@de94298c95d51a37b108cc55af8fa2a039934361125c12a783dcda0d2cf716e0> <天意>>
+2021-11-20 21:01:48,211 - Contact - INFO - load contact <Contact <@e208018394099648be975916aad3bd2e> <Richard>>
+2021-11-20 21:01:48,219 - Contact - INFO - load contact <Contact <@47282b8a1479eec4b26d9ddbe41c13674f7eadcb54168df3939650997869bbcb> <你好烦哦>>
+2021-11-20 21:01:48,232 - Contact - INFO - load contact <Contact <@977523302ac8cc54ea20dd65f355be63> <活着>>
+2021-11-20 21:01:48,239 - Contact - INFO - load contact <Contact <@27160735b03803708400fe1069ff2955a77da5964270abec272949acfef28bb2> <●▂●>>
+2021-11-20 21:01:48,247 - Contact - INFO - load contact <Contact <@2a4d8a73ade8779f69fb593e0621f10459a89a08c15de99a54e2572c55b10332> <陳思婕>>
+2021-11-20 21:01:48,257 - Contact - INFO - load contact <Contact <@ec76e1ebc37b7b3d4991842605dd6524bd19071738728f05d98cca9c8b8b0107> <🙁wx掏泥>>
+2021-11-20 21:01:48,265 - Contact - INFO - load contact <Contact <@cc1384a7e1c9954eaca0fb438b2ce3f2bde8134ff3d131b1b5fa44d8602a7396> <nosmallmood>>
+2021-11-20 21:01:48,272 - Contact - INFO - load contact <Contact <@67e796cbea75a306aeca0711f99e326834b1a8744e419f507e1c81e402e9cd5b> <Andy>>
+2021-11-20 21:01:48,280 - Contact - INFO - load contact <Contact <@a0026df17ba6fe0027b464b23035ac1b75cf5b513daae13d815a9e3338fd2c5c> <姜小红>>
+2021-11-20 21:01:48,303 - Contact - INFO - load contact <Contact <@47d8250ca420b89b41d43912664935152c78e9c12e4a1568c270dd10c4675589> <俗人昭昭>>
+2021-11-20 21:01:48,311 - Contact - INFO - load contact <Contact <@fe29c97f196835ee89b65e430187af86c037d4513ebbcd0c1d17ee30920eec1d> <Fern.cz🧸>>
+2021-11-20 21:01:48,319 - Contact - INFO - load contact <Contact <@b9ffae93a4b4b191a7e31f36a61fc47e64627072daa61b17ecf480b371f11741> <忆苦思甜>>
+2021-11-20 21:01:48,327 - Contact - INFO - load contact <Contact <@ca43fa1f26d51d4d4590afd1191c40fe781197aeb4d61f827671f6984d10347d> <小朋>>
+2021-11-20 21:01:48,335 - Contact - INFO - load contact <Contact <@92ce6a4d581fd7d34dbb2e2a5ed269e5> <石头>>
+2021-11-20 21:01:48,342 - Contact - INFO - load contact <Contact <@582be462889229f6d3205a49054af8f395f3826ace0780b576f945221c892ab2> <凨>>
+2021-11-20 21:01:48,351 - Contact - INFO - load contact <Contact <@2e5333c5d43ddb20009003d499b6400a> <꯭萝꯭卜꯭🥕>>
+2021-11-20 21:01:48,358 - Contact - INFO - load contact <Contact <@1e4b7e87e37e8fba155dfc1a61972c59d18a2d99367c9d9716327bf4ce7687cc> <hdhj>>
+2021-11-20 21:01:48,359 - Wechaty - INFO - receive message <Message#message_type_image[🗣 Contact <@8e060f380e6f848da3454ad3fdde662038ea53a23a0cd7e11c33da821e5db476> <十年。>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]>
+2021-11-20 21:01:48,361 - Wechaty - DEBUG - emit() event <['Message#message_type_image[🗣 Contact <@8e060f380e6f848da3454ad3fdde662038ea53a23a0cd7e11c33da821e5db476> <十年。>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]']> <{}>
+2021-11-20 21:02:02,124 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:02:13,801 - HostiePuppet - DEBUG - receive message info <{'messageId': '2632874861790922565'}>
+2021-11-20 21:02:13,802 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='2632874861790922565', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:02:13,802 - Message - DEBUG - Message ready <Message <2632874861790922565> is not ready>
+2021-11-20 21:02:17,128 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:02:17,357 - Wechaty - INFO - receive message <Message#message_type_image[🗣 Contact <@8e060f380e6f848da3454ad3fdde662038ea53a23a0cd7e11c33da821e5db476> <十年。>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]>
+2021-11-20 21:02:17,358 - Wechaty - DEBUG - emit() event <['Message#message_type_image[🗣 Contact <@8e060f380e6f848da3454ad3fdde662038ea53a23a0cd7e11c33da821e5db476> <十年。>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]']> <{}>
+2021-11-20 21:02:32,127 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:02:46,417 - HostiePuppet - DEBUG - receive message info <{'messageId': '6020688126157936606'}>
+2021-11-20 21:02:46,417 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='6020688126157936606', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:02:46,417 - Message - DEBUG - Message ready <Message <6020688126157936606> is not ready>
+2021-11-20 21:02:46,577 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@4d463eb6548ad61d399bd394b087206e21133ddb3966e33fafbdc52f613902be> <伟奇>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]	不知道>
+2021-11-20 21:02:46,578 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@4d463eb6548ad61d399bd394b087206e21133ddb3966e33fafbdc52f613902be> <伟奇>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]\t不知道']> <{}>
+2021-11-20 21:02:47,126 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:03:02,130 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:03:17,130 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:03:17,514 - HostiePuppet - DEBUG - receive message info <{'messageId': '4974929997180297503'}>
+2021-11-20 21:03:17,515 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='4974929997180297503', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:03:17,515 - Message - DEBUG - Message ready <Message <4974929997180297503> is not ready>
+2021-11-20 21:03:17,645 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@4d463eb6548ad61d399bd394b087206e21133ddb3966e33fafbdc52f613902be> <伟奇>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]	去酷安>
+2021-11-20 21:03:17,647 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@4d463eb6548ad61d399bd394b087206e21133ddb3966e33fafbdc52f613902be> <伟奇>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]\t去酷安']> <{}>
+2021-11-20 21:03:32,132 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:03:47,132 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:04:02,142 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:04:17,133 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:04:29,949 - HostiePuppet - DEBUG - receive message info <{'messageId': '6870674569318050692'}>
+2021-11-20 21:04:29,949 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='6870674569318050692', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:04:29,949 - Message - DEBUG - Message ready <Message <6870674569318050692> is not ready>
+2021-11-20 21:04:30,282 - Contact - INFO - load contact <Contact <@a7e2b587e9aac545a380a08e4ffff170> <俊杰Jacky🤪>>
+2021-11-20 21:04:30,283 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@a7e2b587e9aac545a380a08e4ffff170> <俊杰Jacky🤪>	ding>
+2021-11-20 21:04:30,285 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@a7e2b587e9aac545a380a08e4ffff170> <俊杰Jacky🤪>\tding']> <{}>
+2021-11-20 21:04:30,342 - HostiePuppet - DEBUG - receive message info <{'messageId': '16374134689440859'}>
+2021-11-20 21:04:30,343 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='16374134689440859', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:04:30,343 - Message - DEBUG - Message ready <Message <16374134689440859> is not ready>
+2021-11-20 21:04:30,542 - Wechaty - ERROR - internal error <>
+2021-11-20 21:04:30,775 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@506d3a5da19af14ef3b0ed6734e8b367e0b45025088613d2a6d6c9486545118b> <温暖的蛋挞>	dong>
+2021-11-20 21:04:30,777 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@506d3a5da19af14ef3b0ed6734e8b367e0b45025088613d2a6d6c9486545118b> <温暖的蛋挞>\tdong']> <{}>
+2021-11-20 21:04:32,135 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:04:47,137 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:05:02,151 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:05:16,017 - HostiePuppet - DEBUG - receive message info <{'messageId': '6643754355842167382'}>
+2021-11-20 21:05:16,018 - HostiePuppet - DEBUG - receive message info <{'messageId': '2776676204896912116'}>
+2021-11-20 21:05:16,018 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='6643754355842167382', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:05:16,018 - Message - DEBUG - Message ready <Message <6643754355842167382> is not ready>
+2021-11-20 21:05:16,020 - Wechaty - DEBUG - receive <message> event <EventMessagePayload(message_id='2776676204896912116', type=None, from_id=None, filename=None, text=None, timestamp=None, room_id=None, to_id=None, mention_ids=None)>
+2021-11-20 21:05:16,020 - Message - DEBUG - Message ready <Message <2776676204896912116> is not ready>
+2021-11-20 21:05:17,139 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>
+2021-11-20 21:05:19,988 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@0af91b30963d4e1018be38eabf2cc1ae36ade04aa8b6ea04b6f54abb91e55523> <728>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]	@十年。 >
+2021-11-20 21:05:19,989 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@0af91b30963d4e1018be38eabf2cc1ae36ade04aa8b6ea04b6f54abb91e55523> <728>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]\t@十年。\u2005']> <{}>
+2021-11-20 21:05:19,991 - Wechaty - INFO - receive message <Message#message_type_text[🗣 Contact <@0af91b30963d4e1018be38eabf2cc1ae36ade04aa8b6ea04b6f54abb91e55523> <728>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]	<a target="_blank" href="/cgi-bin/mmwebwx-bin/webwxcheckurl?requrl=htt>
+2021-11-20 21:05:19,992 - Wechaty - DEBUG - emit() event <['Message#message_type_text[🗣 Contact <@0af91b30963d4e1018be38eabf2cc1ae36ade04aa8b6ea04b6f54abb91e55523> <728>@👥 Room <@@aa5eb1d8559b6f51f2d13e52038ca6f996d293593c794abea872ae9a22648955 - Js简单原理>]\t<a target="_blank" href="/cgi-bin/mmwebwx-bin/webwxcheckurl?requrl=htt']> <{}>
+2021-11-20 21:05:32,142 - HostiePuppet - DEBUG - receive heartbeat info <{'data': 'heartbeat@browserbridge ding', 'timeoutMilliseconds': 60000}>

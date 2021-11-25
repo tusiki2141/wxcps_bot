@@ -5,8 +5,8 @@ from typing import List, Optional, Union
 
 from wechaty_puppet import FileBox  # type: ignore
 
-from wechaty import Wechaty, Contact
-from wechaty.user import Message, Room
+from wechaty import Wechaty, Contact,Friendship
+from wechaty.user import Message, Room, contact, friendship, message
 
 
 class MyBot(Wechaty):
@@ -16,6 +16,8 @@ class MyBot(Wechaty):
         listen for message event
         """
         from_contact: Optional[Contact] = msg.talker()
+        frnlist=from_contact.get_id
+        print (frnlist)
         text = msg.text()
         room: Optional[Room] = msg.room()
         if text == 'ding':
@@ -28,6 +30,8 @@ class MyBot(Wechaty):
                 'u=1116676390,2305043183&fm=26&gp=0.jpg',
                 name='ding-dong.jpg')
             await conversation.say(file_box)
+        
+
 
 os.environ['token']='683e40b5-237f-4dc4-bed8-3918c0309f69'
 os.environ['WECHATY_PUPPET_SERVICE_ENDPOINT'] = '192.168.1.224:9099'
