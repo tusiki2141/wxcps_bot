@@ -407,19 +407,14 @@ Sub Copy_Formula(wkbk, wksheet, ind_row, header_row, formula_row, start_row)
     For i = 1 To last_col
         If Selection.MergeCells = False Then
             If UCase(Selection.Value) = "FORMULA" Then
-                
-                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Formula = Cells(formula_row, Selection.Column).Formula
+                            
+                Cells(formula_row, Selection.Column).Copy
+                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).PasteSpecial xlPasteFormulasAndNumberFormats
                 Call Unfilter(wkbk, wksheet)
-                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Value2 = Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Value2
+                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Select
+                Selection.Copy
+                ActiveCell.PasteSpecial xlPasteValues
                 Application.CutCopyMode = False
-            
-'                Cells(formula_row, Selection.Column).Copy
-'                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).PasteSpecial xlPasteFormulasAndNumberFormats
-'                Call Unfilter(wkbk, wksheet)
-'                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Select
-'                Selection.Copy
-'                ActiveCell.PasteSpecial xlPasteValues
-'                Application.CutCopyMode = False
             End If
         End If
         Cells(ind_row, i + 1).Select
