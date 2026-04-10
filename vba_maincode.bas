@@ -288,12 +288,12 @@ Sub Run_action(exe_sec)
             Call Copy_sheetdata(Action_seq(i, 2), Action_seq(i, 3), Action_seq(i, 12), Action_seq(i, 13), Action_seq(i, 14), Action_seq(i, 15), Action_seq(i, 17))
             
         End If
-        Application.StatusBar = "Processing...Step " & i & " - " & Action_seq(i, 1) & ". Total " & FormatPercent(i / ctrl_no) & " Completed."
+        Application.StatusBar = "Completed..." & action_name & " Step " & i & " - Row_" & row_no & "_" & Action_seq(i, 1) & ". Total " & FormatPercent(i / ctrl_no) & " Completed."
         'DoEvents
     Next i
 
     Application.StatusBar = False
-    Application.ScreenUpdating = True
+'    Application.ScreenUpdating = True
 End Sub
 
 
@@ -407,13 +407,19 @@ Sub Copy_Formula(wkbk, wksheet, ind_row, header_row, formula_row, start_row)
     For i = 1 To last_col
         If Selection.MergeCells = False Then
             If UCase(Selection.Value) = "FORMULA" Then
-                Cells(formula_row, Selection.Column).Copy
-                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).PasteSpecial xlPasteFormulasAndNumberFormats
+                
+                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Formula = Cells(formula_row, Selection.Column).Formula
                 Call Unfilter(wkbk, wksheet)
-                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Select
-                Selection.Copy
-                ActiveCell.PasteSpecial xlPasteValues
+                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Value2 = Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Value2
                 Application.CutCopyMode = False
+            
+'                Cells(formula_row, Selection.Column).Copy
+'                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).PasteSpecial xlPasteFormulasAndNumberFormats
+'                Call Unfilter(wkbk, wksheet)
+'                Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).Select
+'                Selection.Copy
+'                ActiveCell.PasteSpecial xlPasteValues
+'                Application.CutCopyMode = False
             End If
         End If
         Cells(ind_row, i + 1).Select
