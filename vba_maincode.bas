@@ -7,8 +7,9 @@ Dim ctrl_err As String
 Dim Cnt_open, Cnt_close As Long
 Dim ctrl_ws As Variant
 Dim src_arr, tar_arr As String
-Dim Beg as time
-
+Dim Beg as date
+Dim exe_sec As Variant
+Dim input_session As String
 
 Sub Combination_main()
 'Main Function
@@ -21,11 +22,11 @@ Sub Combination_main()
     ctrl_ws = Array("Control", "Src", "File", "Cut file", "Email")
     
     'Define workbook & control worksheet
-    ThisWorkbook.Activate
+
     Set wbThis = ThisWorkbook
     Worksheets("Control").Activate
-    Set wsThis = wbThis.ActiveSheet
-    input_session = Range("B1").Value
+    Set wsThis = ThisWorkbook.Worksheets("Control")
+    input_session = wsThis.Range("B1").Value
     
     'Split session start cell for multiple input
     exe_sec = Split(input_session, "|")
@@ -36,11 +37,10 @@ Sub Combination_main()
     Next i
     
     'Show Macro workbook and Control Worksheet
-    wbThis.Activate
     wsThis.Activate
     Application.DisplayAlerts = True
     Application.ScreenUpdating = True
-    Range("B1").Select
+    wsThis.Range("B1").Select
     MsgBox ("Completed. " & vbNewLine & Beg & vbNewLine & Now)
    
 End Sub
@@ -52,7 +52,7 @@ Sub Run_action(exe_sec)
     Get_control (exe_sec)
     
     'Validate Control table input
-    Validate_Control (exe_sec)
+    'Validate_Control (exe_sec)
     
     action_name = Range(exe_sec).Offset(-2, 0).Value
     row_no = Range(exe_sec).Offset(1, 0).Row
@@ -506,9 +506,7 @@ Sub Append_All(wkbk, wksheet, ind_row, header_row, add_srctext, src_path, src_bk
     'Skip this step if user input N/A in source workbook
     Dim i As Single
     
-    If src_bk = "N/A" Then
-       Exit Sub
-    End If
+    If src_bk = "N/A" Then Exit Sub
 
     'Use current workbook if user input is blank
     If wkbk = "" Then
@@ -557,10 +555,9 @@ Sub Append_All(wkbk, wksheet, ind_row, header_row, add_srctext, src_path, src_bk
             src_last_row = last_row_check(src_header_row)
 
             If src_last_row >= src_data_row Then
-                src_arr = Range(Cells(src_data_row, src_data_col), src_last_cell)
-'                Range(Cells(src_data_row, src_data_col), src_last_cell).Select
-                
-                'Copy and paste as value
+                src_arr = Range(Cells(src_data_row, src_data_col), src_last_cell).value
+'                Range(Cells(src_data_row, src_data_col), src_last_cell).Select                
+'                Copy and paste as value
 '                Selection.Copy
                 Workbooks(wkbk).Worksheets(wksheet).Activate
                 
