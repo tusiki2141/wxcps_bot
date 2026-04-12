@@ -61,7 +61,7 @@ Sub Run_action(exe_sec)
     For i = 1 To ctrl_no
 
     
-        Application.ScreenUpdating = False
+        
         Application.StatusBar = "Processing..." & action_name & " Step " & i & " - Row_" & row_no & "_" & Action_seq(i, 1) & ". Total " & FormatPercent(i / ctrl_no) & " Completed."
         row_no = row_no + 1
         If (UCase(Trim(Action_seq(i, 1))) = "CLEAR_DATA") Then
@@ -295,7 +295,7 @@ Sub Run_action(exe_sec)
     Next i
 
     Application.StatusBar = False
-'    Application.ScreenUpdating = True
+
 End Sub
 
 
@@ -994,7 +994,7 @@ End Sub
 
 Sub Copy_Sheet(src_path, src_bk, src_sheet, output_path, output_bk)
 'Copy sheet base on control table information
-    Application.DisplayAlerts = False
+
     Dim i As Single
     'Check if source workbook name is blank
     If src_bk = "" Then
@@ -1065,9 +1065,9 @@ Sub Delete_sheet(wk_bk, del_by)
 End Sub
 
 Sub Cut_File()
-    Application.DisplayAlerts = False
+
     Dim i, j, k As Long
-    'Application.ScreenUpdating = False
+
     criteria_first_col = 9
     
     If wbThis Is Nothing Then
@@ -1436,14 +1436,14 @@ End Sub
 Sub DelBlankSheet(wkbk)
 'To delete blank sheet
 
-    'Application.DisplayAlerts = False
+
     Workbooks(wkbk).Activate
     For Each sheet In ActiveWorkbook.Sheets
         If Application.CountA(sheet.UsedRange.Cells) = 0 Then
             sheet.Delete
         End If
     Next
-    'Application.DisplayAlerts = True
+
 
 End Sub
 
@@ -1568,8 +1568,7 @@ End Sub
 
 
 Sub Send_Email(header_row)
-    Application.DisplayAlerts = False
-    'Application.ScreenUpdating = False
+
     'criteria_first_col = 5
     Dim i, j As Long
     If wbThis Is Nothing Then
@@ -2255,7 +2254,7 @@ End Sub
 
 Sub Append_in_Same_Line(wkbk, wksheet, ind_row, header_row, start_row, src_path, src_bk, src_sheet, src_header_row, src_data_row, src_data_col)
     
-    Application.DisplayAlerts = False
+
     Dim i, j As Long
 'To check and copy columns with same name to designated worksheet
     
@@ -2609,7 +2608,7 @@ End Sub
 
 Sub Copy_sheetdata(wkbk, wksheet, src_path, src_bk, src_sheet, src_header_row, src_data_col)
 
-    Application.DisplayAlerts = False
+
     
 'To check and copy columns with same name to designated worksheet
     
