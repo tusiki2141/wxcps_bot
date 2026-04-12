@@ -1,11 +1,13 @@
+Option Explicit
 Dim wbThis As Workbook
 Dim wsThis As Worksheet
 Dim Action_seq As Variant
-Dim ctrl_no, ctrl_lastrow As Integer
+Dim ctrl_no, ctrl_lastrow As Long
 Dim ctrl_err As String
-Dim Cnt_open, Cnt_close As Integer
+Dim Cnt_open, Cnt_close As Long
 Dim ctrl_ws As Variant
 Dim src_arr, tar_arr As String
+Dim Beg as time
 
 
 Sub Combination_main()
@@ -70,7 +72,7 @@ Sub Run_action(exe_sec)
             'parameter(wkbk, wksheet, ind_row, header_row, formula_row, start_row)
             Call Copy_Formula(Action_seq(i, 2), Action_seq(i, 3), Action_seq(i, 4), Action_seq(i, 6), Action_seq(i, 5), Action_seq(i, 7))
             
-        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "OPEN_FILE", vbTectCompare) > 0 Then
+        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "OPEN_FILE", vbTextCompare) > 0 Then
             
             If InStr(1, UCase(Trim(Action_seq(i, 1))), "EDIT", vbTextCompare) > 0 Then
                 'parameter(src_path, src_bk, open_type)
@@ -82,7 +84,7 @@ Sub Run_action(exe_sec)
                 
             End If
             
-        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "CLOSE_FILE", vbTectCompare) > 0 Then
+        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "CLOSE_FILE", vbTextCompare) > 0 Then
             
             If InStr(1, UCase(Trim(Action_seq(i, 1))), "SAVE AS", vbTextCompare) > 0 Then
                 'parameter(output_path, output_bk, close_type)
@@ -171,7 +173,7 @@ Sub Run_action(exe_sec)
             'parameter(src_path, wksheet)
             Call List_all_files_subfolders(Action_seq(i, 12), "File")
         
-        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "MOVE_FILE", vbTectCompare) > 0 Then
+        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "MOVE_FILE", vbTextCompare) > 0 Then
         
             If InStr(1, UCase(Trim(Action_seq(i, 1))), "OVERWRITE", vbTextCompare) > 0 Then
                 'parameter(src_path, src_bk, output_path, move_type)
@@ -183,7 +185,7 @@ Sub Run_action(exe_sec)
                 
             End If
         
-        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "COPY_FILE", vbTectCompare) > 0 Then
+        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "COPY_FILE", vbTextCompare) > 0 Then
 
             If InStr(1, UCase(Trim(Action_seq(i, 1))), "OVERWRITE", vbTextCompare) > 0 Then
                 'parameter(src_path, src_bk, output_path, copy_type)
@@ -601,7 +603,7 @@ Sub Append_by_Col_Name(wkbk, wksheet, header_row, add_srctext, src_path, src_bk,
 'To check and copy columns with same name to designated worksheet
     
     'Skip this step if user input N/A in source workbook
-    Dim i, j As Integer
+    Dim i, j As Long
     If src_bk = "N/A" Then
        Exit Sub
     End If
@@ -733,7 +735,7 @@ Sub Filter(wkbk, wksheet, header_row, filter_by)
 'Filter based on user requested column & values
 
     'Use current workbook if user input is blank
-    Dim i, j As Integer
+    Dim i, j As Long
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -945,7 +947,7 @@ Sub Delete_Col_Row(wkbk, wksheet, del_by)
 'To delete specified rows and columns
 
     'Use current workbook if user input is blank
-    Dim i, j As Integer
+    Dim i, j As Long
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -1064,7 +1066,7 @@ End Sub
 
 Sub Cut_File()
     Application.DisplayAlerts = False
-    Dim i, j, k As Integer
+    Dim i, j, k As Long
     'Application.ScreenUpdating = False
     criteria_first_col = 9
     
@@ -1569,7 +1571,7 @@ Sub Send_Email(header_row)
     Application.DisplayAlerts = False
     'Application.ScreenUpdating = False
     'criteria_first_col = 5
-    Dim i, j As Integer
+    Dim i, j As Long
     If wbThis Is Nothing Then
         Set wbThis = ThisWorkbook
     End If
@@ -1827,7 +1829,7 @@ End Sub
 
 Sub Change_dot_to_slash(wkbk, wksheet, header_row, start_row, dot_col)
 'Change all dot to slash for specified column
-    Dim i, j As Integer
+    Dim i, j As Long
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -1969,7 +1971,7 @@ Function check_pivot_range(ByVal pivot_range As String) As String
     '     3) If header only, select one more row for pivot
     
     Dim mystr, str1, str2, final_str, sheet, Cell_1, Cell_2 As String
-    Dim i, j As Integer
+    Dim i, j As Long
      
     
     sheet = Left(pivot_range, InStr(pivot_range, "!"))
@@ -1994,7 +1996,7 @@ End Function
 
 Sub Filter_Period(wkbk, wksheet, header_row, filter_by)
 'Filter based on user requested column & values
-    Dim i, j As Integer
+    Dim i, j As Long
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -2132,7 +2134,7 @@ End Sub
 
 Sub Append_by_Col_Name_notCloseFile(wkbk, wksheet, header_row, add_srctext, src_path, src_bk, src_sheet, src_header_row, src_data_row, src_data_col)
 'To check and copy columns with same name to designated worksheet
-    Dim i, j As Integer
+    Dim i, j As Long
     'Skip this step if user input N/A in source workbook
     If src_bk = "N/A" Then
        Exit Sub
@@ -2254,7 +2256,7 @@ End Sub
 Sub Append_in_Same_Line(wkbk, wksheet, ind_row, header_row, start_row, src_path, src_bk, src_sheet, src_header_row, src_data_row, src_data_col)
     
     Application.DisplayAlerts = False
-    Dim i, j As Integer
+    Dim i, j As Long
 'To check and copy columns with same name to designated worksheet
     
     'Skip this step if user input N/A in source workbook
@@ -2340,7 +2342,7 @@ End Sub
 Sub Remove_Duplicate(wkbk, wksheet, header_row, filter_by)
     'To Remove specific range duplicate records
     
-    Dim i, j As Integer
+    Dim i, j As Long
     Dim myCol() As Variant
        
     'Use current workbook if user input is blank
