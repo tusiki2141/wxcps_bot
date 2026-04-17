@@ -1,18 +1,18 @@
 Option Explicit
 
 ' =====================================================
-' 优化后的检查序列宏
-' 功能：在IT2001和IT2006工作表之间进行工时匹配计算
-' 优化重点：
-' 1. 消除不必要的选择操作
-' 2. 使用数组批量处理数据
-' 3. 改进变量命名和代码结构
-' 4. 优化循环逻辑
+' ÓÅ»¯ºóµÄ¼ì²éÐòÁÐºê
+' ¹¦ÄÜ£ºÔÚIT2001ºÍIT2006¹¤×÷±íÖ®¼ä½øÐÐ¹¤Ê±Æ¥Åä¼ÆËã
+' ÓÅ»¯ÖØµã£º
+' 1. Ïû³ý²»±ØÒªµÄÑ¡Ôñ²Ù×÷
+' 2. Ê¹ÓÃÊý×éÅúÁ¿´¦ÀíÊý¾Ý
+' 3. ¸Ä½ø±äÁ¿ÃüÃûºÍ´úÂë½á¹¹
+' 4. ÓÅ»¯Ñ­»·Âß¼­
 ' =====================================================
 
 Sub CheckseqOptimized()
     
-    ' 声明变量
+    ' ÉùÃ÷±äÁ¿
     Dim startTime As Single
     Dim ws2001 As Worksheet, ws2006 As Worksheet
     Dim lastRow2001 As Long, lastRow2006 As Long
@@ -21,39 +21,39 @@ Sub CheckseqOptimized()
     Dim currentRow2001 As Long, currentRow2006 As Long
     Dim matchFound As Boolean
     
-    ' 记录开始时间
+    ' ¼ÇÂ¼¿ªÊ¼Ê±¼ä
     startTime = Timer
     
-    ' 设置工作表引用
+    ' ÉèÖÃ¹¤×÷±íÒýÓÃ
     Set ws2001 = Worksheets("IT2001")
     Set ws2006 = Worksheets("IT2006")
     
-    ' 关闭屏幕更新和自动计算以提高性能
+    ' ¹Ø±ÕÆÁÄ»¸üÐÂºÍ×Ô¶¯¼ÆËãÒÔÌá¸ßÐÔÄÜ
     Application.ScreenUpdating = False
     Application.Calculation = xlCalculationManual
     Application.EnableEvents = False
     
-    ' 获取数据范围
+    ' »ñÈ¡Êý¾Ý·¶Î§
     lastRow2001 = ws2001.Cells(ws2001.Rows.Count, "A").End(xlUp).Row
     lastRow2006 = ws2006.Cells(ws2006.Rows.Count, "A").End(xlUp).Row
     
-    ' 检查是否有足够的数据
+    ' ¼ì²éÊÇ·ñÓÐ×ã¹»µÄÊý¾Ý
     If lastRow2001 < 7 Or lastRow2006 < 7 Then
-        MsgBox "数据不足，请检查工作表数据"
+        MsgBox "Êý¾Ý²»×ã£¬Çë¼ì²é¹¤×÷±íÊý¾Ý"
         Exit Sub
     End If
     
-    ' 将数据加载到数组中进行批量处理
+    ' ½«Êý¾Ý¼ÓÔØµ½Êý×éÖÐ½øÐÐÅúÁ¿´¦Àí
     data2001 = ws2001.Range("A6:Z" & lastRow2001).Value
     data2006 = ws2006.Range("A7:V" & lastRow2006).Value
     
-    ' 主处理循环 - 遍历IT2001数据
+    ' Ö÷´¦ÀíÑ­»· - ±éÀúIT2001Êý¾Ý
     For i = 1 To UBound(data2001, 1)
         
-        ' 检查是否需要处理（第26列为空）
+        ' ¼ì²éÊÇ·ñÐèÒª´¦Àí£¨µÚ26ÁÐÎª¿Õ£©
         If IsEmpty(data2001(i, 26)) Or data2001(i, 26) = "" Then
             
-            ' 获取当前行数据
+            ' »ñÈ¡µ±Ç°ÐÐÊý¾Ý
             Dim employeeId As String
             Dim startDate As Long, endDate As Long
             Dim hours2001 As Double
@@ -62,20 +62,21 @@ Sub CheckseqOptimized()
             startDate = data2001(i, 7)
             endDate = data2001(i, 8)
             hours2001 = data2001(i, 19)
-            currentRow2006 = data2001(i, 25) ' 上次匹配的位置
+            currentRow2006 = data2001(i, 25) - 6 ' ÉÏ´ÎÆ¥ÅäµÄÎ»ÖÃ
             
-            ' 更新状态栏显示进度
-            Application.StatusBar = "进度: " & i & " / " & UBound(data2001, 1) & ": " & Format(i / UBound(data2001, 1), "Percent")
+            ' ¸üÐÂ×´Ì¬À¸ÏÔÊ¾½ø¶È
+            Application.StatusBar = "½ø¶È: " & i & " / " & UBound(data2001, 1) & ": " & Format(i / UBound(data2001, 1), "Percent")
             
-            ' 如果当前行有上次匹配记录，从该位置开始搜索
-            If currentRow2006 = 0 Then currentRow2006 = 1
+            ' Èç¹ûµ±Ç°ÐÐÓÐÉÏ´ÎÆ¥Åä¼ÇÂ¼£¬´Ó¸ÃÎ»ÖÃ¿ªÊ¼ËÑË÷
+            If currentRow2006 = -6 Then currentRow2006 = UBound(data2006, 1)
+           
             
             matchFound = False
             
-            ' 在IT2006中搜索匹配项
+            ' ÔÚIT2006ÖÐËÑË÷Æ¥ÅäÏî
             For j = currentRow2006 To UBound(data2006, 1)
                 
-                ' 检查匹配条件
+                ' ¼ì²éÆ¥ÅäÌõ¼þ
                 If data2006(j, 1) = employeeId And _
                    startDate >= data2006(j, 17) And _
                    startDate <= data2006(j, 18) Then
@@ -84,59 +85,59 @@ Sub CheckseqOptimized()
                     availableHours = data2006(j, 16)
                     usedHours = data2006(j, 21)
                     
-                    ' 情况1：有足够工时
+                    ' Çé¿ö1£ºÓÐ×ã¹»¹¤Ê±
                     If availableHours - usedHours - hours2001 >= 0 Then
                         data2006(j, 21) = usedHours + hours2001
                         data2001(i, 26) = data2006(j, 20)
-                        data2001(i, 25) = j ' 记录匹配位置
+                        data2001(i, 25) = j ' ¼ÇÂ¼Æ¥ÅäÎ»ÖÃ
                         matchFound = True
                         Exit For
                         
-                    ' 情况2：工时不足，需要溢出处理
+                    ' Çé¿ö2£º¹¤Ê±²»×ã£¬ÐèÒªÒç³ö´¦Àí
                     ElseIf availableHours - usedHours > 0 Then
                         Dim overflowHours As Double
                         overflowHours = (availableHours - usedHours - hours2001) * -1
                         
-                        ' 分配当前可用的工时
+                        ' ·ÖÅäµ±Ç°¿ÉÓÃµÄ¹¤Ê±
                         data2006(j, 21) = availableHours
                         data2001(i, 26) = data2006(j, 20) & " " & overflowHours
                         
-                        ' 处理溢出到下一行
+                        ' ´¦ÀíÒç³öµ½ÏÂÒ»ÐÐ
                         matchFound = HandleHourOverflow(data2006, data2001, i, j, employeeId, startDate, overflowHours)
                         Exit For
                     End If
                 End If
             Next j
             
-            ' 如果没有找到匹配项，记录状态
+            ' Èç¹ûÃ»ÓÐÕÒµ½Æ¥ÅäÏî£¬¼ÇÂ¼×´Ì¬
             If Not matchFound Then
-                data2001(i, 26) = "未找到匹配项"
+                data2001(i, 26) = "Î´ÕÒµ½Æ¥ÅäÏî"
             End If
         End If
     Next i
     
-    ' 将处理后的数据写回工作表
+    ' ½«´¦ÀíºóµÄÊý¾ÝÐ´»Ø¹¤×÷±í
     ws2001.Range("A6:Z" & lastRow2001).Value = data2001
     ws2006.Range("A7:V" & lastRow2006).Value = data2006
     
-    ' 恢复应用程序设置
+    ' »Ö¸´Ó¦ÓÃ³ÌÐòÉèÖÃ
     Application.Calculation = xlCalculationAutomatic
     Application.ScreenUpdating = True
     Application.EnableEvents = True
     Application.StatusBar = False
     
-    ' 保存工作簿
+    ' ±£´æ¹¤×÷²¾
     ActiveWorkbook.Save
     
-    ' 显示处理时间
+    ' ÏÔÊ¾´¦ÀíÊ±¼ä
     Dim elapsedTime As Single
     elapsedTime = Timer - startTime
-    MsgBox "处理完成！耗时: " & Format(elapsedTime / 60, "0.00") & " 分钟"
+    MsgBox "´¦ÀíÍê³É£¡ºÄÊ±: " & Format(elapsedTime / 60, "0.00") & " ·ÖÖÓ"
     
 End Sub
 
 ' =====================================================
-' 处理工时溢出到下一行的函数
+' ´¦Àí¹¤Ê±Òç³öµ½ÏÂÒ»ÐÐµÄº¯Êý
 ' =====================================================
 Private Function HandleHourOverflow(ByRef data2006() As Variant, ByRef data2001() As Variant, _
                                    ByVal row2001 As Long, ByVal startRow2006 As Long, _
@@ -146,34 +147,36 @@ Private Function HandleHourOverflow(ByRef data2006() As Variant, ByRef data2001(
     Dim result As Boolean
     result = False
     
-    ' 检查下一行是否可以接收溢出工时
+    ' ¼ì²éÏÂÒ»ÐÐÊÇ·ñ¿ÉÒÔ½ÓÊÕÒç³ö¹¤Ê±
     If startRow2006 + 1 <= UBound(data2006, 1) Then
         
         Dim nextRow As Long
         nextRow = startRow2006 + 1
         
-        ' 检查下一行是否满足条件
+        ' ¼ì²éÏÂÒ»ÐÐÊÇ·ñÂú×ãÌõ¼þ
         If data2006(nextRow, 1) = employeeId And _
            startDate >= data2006(nextRow, 17) And _
            startDate <= data2006(nextRow, 18) And _
            data2006(nextRow, 16) - overflowHours > 0 Then
             
-            ' 分配工时到下一行
+            ' ·ÖÅä¹¤Ê±µ½ÏÂÒ»ÐÐ
             data2006(nextRow, 21) = overflowHours
             data2001(row2001, 26) = data2001(row2001, 26) & " " & data2006(nextRow, 20) & " " & overflowHours
             data2001(row2001, 25) = nextRow
             result = True
             
         Else
-            ' 无法分配，标记为溢出
-            data2006(startRow2006, 22) = "溢出 " & overflowHours
-            data2001(row2001, 26) = data2001(row2001, 26) & " 溢出 " & overflowHours
+            ' ÎÞ·¨·ÖÅä£¬±ê¼ÇÎªÒç³ö
+            data2006(startRow2006, 22) = "Òç³ö " & overflowHours
+            data2001(row2001, 26) = data2001(row2001, 26) & " Òç³ö " & overflowHours
+            data2006(startRow2006, 21) = data2006(startRow2006, 21) + overflowHours
             result = False
         End If
     Else
-        ' 没有下一行，标记为溢出
-        data2006(startRow2006, 22) = "溢出 " & overflowHours
-        data2001(row2001, 26) = data2001(row2001, 26) & " 溢出 " & overflowHours
+        ' Ã»ÓÐÏÂÒ»ÐÐ£¬±ê¼ÇÎªÒç³ö
+        data2006(startRow2006, 22) = "Òç³ö " & overflowHours
+        data2001(row2001, 26) = data2001(row2001, 26) & " Òç³ö " & overflowHours
+        data2006(startRow2006, 21) = data2006(startRow2006, 21) + overflowHours
         result = False
     End If
     
@@ -182,7 +185,7 @@ Private Function HandleHourOverflow(ByRef data2006() As Variant, ByRef data2001(
 End Function
 
 ' =====================================================
-' 辅助函数：清除之前的处理结果
+' ¸¨Öúº¯Êý£ºÇå³ýÖ®Ç°µÄ´¦Àí½á¹û
 ' =====================================================
 Sub ClearPreviousResults()
     
@@ -190,20 +193,21 @@ Sub ClearPreviousResults()
     Set ws2001 = Worksheets("IT2001")
     Set ws2006 = Worksheets("IT2006")
     
-    ' 清除IT2001的第26列（处理结果）
+    ' Çå³ýIT2001µÄµÚ26ÁÐ£¨´¦Àí½á¹û£©
     With ws2001
         If .Cells(.Rows.Count, "Z").End(xlUp).Row >= 6 Then
             .Range("Z6:Z" & .Cells(.Rows.Count, "Z").End(xlUp).Row).ClearContents
         End If
     End With
     
-    ' 清除IT2006的第21-22列（已用工时和溢出标记）
+    ' Çå³ýIT2006µÄµÚ21-22ÁÐ£¨ÒÑÓÃ¹¤Ê±ºÍÒç³ö±ê¼Ç£©
     With ws2006
         If .Cells(.Rows.Count, "U").End(xlUp).Row >= 7 Then
             .Range("U7:V" & .Cells(.Rows.Count, "U").End(xlUp).Row).ClearContents
         End If
     End With
     
-    MsgBox "已清除之前的处理结果"
+    MsgBox "ÒÑÇå³ýÖ®Ç°µÄ´¦Àí½á¹û"
     
 End Sub
+
