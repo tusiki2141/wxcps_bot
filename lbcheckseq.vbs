@@ -1,153 +1,147 @@
 Option Explicit
 
-'=============================================================
-' CheckSeq - 序列检查与年假小时更新
-' 功能：比对 IT2001 与 IT2006 工作表，按 SID 和日期区间匹配，
-'        更新 IT2006 的累计小时数（第21列），并将结果写回 IT2001 第26列
-' 作者：（你的名字）
-' 修订：2026-04-17
-'=============================================================
 Sub CheckSeq()
 
-    ' --- 工作表引用 ---
+    ' ===== 变量声明 =====
+    ' 工作表对象
     Dim ws01 As Worksheet
     Dim ws06 As Worksheet
-    Set ws01 = Worksheets("IT2001")
-    Set ws06 = Worksheets("IT2006")
-
-    ' --- 行边界 ---
-    Dim lastRow01 As Long
-    Dim lastRow06 As Long
-    lastRow01 = ws01.Cells(ws01.Rows.Count, 1).End(xlUp).Row
-    lastRow06 = ws06.Cells(ws06.Rows.Count, 1).End(xlUp).Row
-
-    ' --- IT2001 数据数组（一次性读入，避免逐行访问工作表）---
-    '    列映射：A=1, G=7, H=8, R=18, Y=25, Z=26
-    Dim data01 As Variant
-    data01 = ws01.Range(ws01.Cells(7, 1), ws01.Cells(lastRow01, 26)).Value
-
-    ' --- IT2006 数据数组（一次性读入）---
-    '    列映射：A=1, P=16, Q=17, R=18, S=19, T=20, U=21
-    Dim data06 As Variant
-    data06 = ws06.Range(ws06.Cells(7, 1), ws06.Cells(lastRow06, 21)).Value
-
-    ' --- 性能优化 ---
+    
+    ' 行号
+    Dim lastRow01   As Long   ' IT2001 数据末行
+    Dim lastRow06   As Long   ' IT2006 数据末行
+    Dim rowIdx01    As Long   ' IT2001 当前行索引
+    Dim rowIdx06    As Long   ' IT2006 当前行索引
+    Dim startRow06  As Long   ' IT2006 匹配起始行（来自 IT2001 第25列）
+    
+    ' IT2001 字段
+    Dim empID01     As String  ' 员工ID（第1列）
+    Dim startDate01 As Date    ' 开始日期（第7列）
+    Dim endDate01   As Date    ' 结束日期（第8列）
+    Dim hours01     As Double  ' 工时（第18列）
+    Dim checkMark01 As String  ' 校验标记（第26列）
+    
+    ' IT2006 字段
+    Dim empID06     As String  ' 员工ID（第1列）
+    Dim startDate06 As Date    ' 合同开始日期（第17列）
+    Dim endDate06   As Date    ' 合同结束日期（第18列）
+    Dim hours06     As Double  ' 工时（第16列）
+    Dim deduction06 As Double  ' 扣款阈值（第19列）
+    Dim accum06     As Double  ' 已累计金额（第21列）
+    
+    ' 中间计算变量
+    Dim nextDeduction As Double  ' 下一行的扣款值（第19列）
+    Dim remainHours   As Double  ' 剩余工时 = hours01 + accum06 - deduction06
+    
+    ' ===== 性能优化：关闭屏幕刷新与自动计算 =====
     Application.ScreenUpdating = False
     Application.Calculation = xlCalculationManual
-    Application.EnableEvents = False
+    Application.EnableEvents = False   ' 额外禁用事件，减少触发
+    
+    ' ===== 绑定工作表对象，避免重复查找 =====
+    Set ws01 = ThisWorkbook.Worksheets("IT2001")
+    Set ws06 = ThisWorkbook.Worksheets("IT2006")
+    
+    ' ===== 获取数据末行（不依赖 Select/Activate）=====
+    lastRow06 = ws06.Cells(ws06.Rows.Count, 1).End(xlUp).Row
+    lastRow01 = ws01.Cells(ws01.Rows.Count, 1).End(xlUp).Row
+    
+    ' ===== 性能优化：将 IT2006 关键列读入数组，减少单元格 I/O =====
+    Dim arr06 As Variant
+    ' 读取 IT2006 第1~21列，从第7行到末行
+    arr06 = ws06.Range(ws06.Cells(7, 1), ws06.Cells(lastRow06, 21)).Value
+    ' arr06(r, c) 对应实际行 = r + 6，列 = c（1-based）
+    '   列1  = 员工ID
+    '   列16 = 工时
+    '   列17 = 合同开始日期
+    '   列18 = 合同结束日期
+    '   列19 = 扣款阈值
+    '   列20 = 标记字段
+    '   列21 = 已累计金额
 
-    ' --- 主循环：遍历 IT2001 每一行 ---
-    Dim i As Long
-    Dim j As Long
-
-    ' IT2001 数组偏移量（数组从1开始，对应工作表第7行）
-    Const OFFSET01 As Long = 6   ' 工作表行号 = 数组索引 + 6
-
-    ' IT2006 数组偏移量
-    Const OFFSET06 As Long = 6   ' 工作表行号 = 数组索引 + 6
-
-    For i = 1 To UBound(data01, 1)
-
-        ' 跳过已处理行（第26列 = 数组第26列）
-        If data01(i, 26) <> "" Then GoTo NextI
-
-        ' 读取 IT2001 当前行字段
-        Dim SID01   As String
-        Dim SDate01 As Date
-        Dim EDate01 As Date
-        Dim Hr01    As Double
-        Dim crow01  As Long
-
-        SID01   = CStr(data01(i, 1))
-        SDate01 = CDate(data01(i, 7))
-        EDate01 = CDate(data01(i, 8))
-        Hr01    = CDbl(data01(i, 18))
-        crow01  = CLng(data01(i, 25))
-
-        If crow01 = 0 Then GoTo NextI
-
-        ' --- 内循环：在 IT2006 中查找匹配行 ---
-        Dim j06Start As Long
-        j06Start = crow01 - OFFSET06   ' 转换为数组索引
-
-        If j06Start < 1 Then j06Start = 1
-
-        For j = j06Start To UBound(data06, 1) - 2  ' 留2行余量给 j+1 / j+2
-
-            Dim SID06   As String
-            Dim SDate06 As Date
-            Dim EDate06 As Date
-            Dim Hr06    As Double
-            Dim Ded06   As Double
-            Dim Acc06   As Double
-
-            SID06   = CStr(data06(j, 1))
-            SDate06 = CDate(data06(j, 17))
-            EDate06 = CDate(data06(j, 18))
-            Hr06    = CDbl(data06(j, 16))
-            Ded06   = CDbl(data06(j, 19))
-            Acc06   = CDbl(data06(j, 21))
-
-            ' 条件：SID 匹配 + SDate01 在区间内 + 未达上限
-            If SID06 = SID01 _
-               And SDate01 >= SDate06 _
-               And SDate01 <= EDate06 _
-               And Acc06 < Ded06 Then
-
-                Dim newAcc  As Double
-                Dim overflow As Double
-                newAcc   = Hr01 + Acc06
-                overflow = newAcc - Ded06
-
-                If newAcc >= Ded06 Then
-                    ' 超出当前区间上限，需溢出到下一区间
-                    data06(j, 21) = Ded06       ' 当前行填满
-
-                    Dim nextRow As Long
-                    Dim label06 As String
-
-                    If Round(CDbl(data06(j + 1, 19)), 2) >= Round(overflow, 2) Then
-                        ' 溢出量 <= 下一行上限：写入 j+1
-                        nextRow = j + 1
-                    Else
-                        ' 溢出量 > 下一行上限：写入 j+2
-                        nextRow = j + 2
+    ' ===== 主循环：遍历 IT2001 =====
+    For rowIdx01 = 7 To lastRow01
+    
+        checkMark01 = ws01.Cells(rowIdx01, 26).Value
+        
+        ' 仅处理未标记的行
+        If checkMark01 = "" Then
+        
+            empID01     = ws01.Cells(rowIdx01, 1).Value
+            startDate01 = ws01.Cells(rowIdx01, 7).Value
+            endDate01   = ws01.Cells(rowIdx01, 8).Value
+            hours01     = ws01.Cells(rowIdx01, 18).Value
+            startRow06  = ws01.Cells(rowIdx01, 25).Value
+            
+            ' 仅当存在有效起始行时才匹配
+            If startRow06 <> 0 Then
+            
+                ' 将 startRow06 转换为数组下标（数组第1行对应实际第7行）
+                Dim arrStartIdx As Long
+                arrStartIdx = startRow06 - 6   ' arr06 的起始下标
+                
+                For rowIdx06 = arrStartIdx To UBound(arr06, 1)
+                
+                    empID06     = arr06(rowIdx06, 1)
+                    startDate06 = arr06(rowIdx06, 17)
+                    endDate06   = arr06(rowIdx06, 18)
+                    hours06     = arr06(rowIdx06, 16)
+                    deduction06 = arr06(rowIdx06, 19)
+                    accum06     = arr06(rowIdx06, 21)
+                    
+                    ' 匹配条件：员工ID相同 + 日期在合同范围内 + 累计未达扣款阈值
+                    If empID06 = empID01 _
+                        And startDate01 >= startDate06 _
+                        And startDate01 <= endDate06 _
+                        And accum06 < deduction06 Then
+                        
+                        remainHours = hours01 + accum06 - deduction06
+                        
+                        If hours01 + accum06 >= deduction06 Then
+                            ' 工时超过扣款阈值，需要拆分到下一行
+                            nextDeduction = arr06(rowIdx06 + 1, 19)
+                            
+                            If Round(nextDeduction, 2) >= Round(remainHours, 2) Then
+                                ' 情况A：余量可以放入 j+1 行
+                                ws06.Cells(rowIdx06 + 6, 21).Value = remainHours
+                                ws06.Cells(rowIdx06 + 5, 21).Value = deduction06
+                                ' 更新数组缓存，保持一致性
+                                arr06(rowIdx06 + 1, 21) = remainHours
+                                arr06(rowIdx06, 21)     = deduction06
+                                ws01.Cells(rowIdx01, 26).Value = _
+                                    ws06.Cells(rowIdx06 + 5, 20).Value & " " & _
+                                    ws06.Cells(rowIdx06 + 6, 20).Value
+                            Else
+                                ' 情况B：余量放入 j+2 行
+                                ws06.Cells(rowIdx06 + 7, 21).Value = remainHours
+                                ws06.Cells(rowIdx06 + 5, 21).Value = deduction06
+                                arr06(rowIdx06 + 2, 21) = remainHours
+                                arr06(rowIdx06, 21)     = deduction06
+                                ws01.Cells(rowIdx01, 26).Value = _
+                                    ws06.Cells(rowIdx06 + 5, 20).Value & " " & _
+                                    ws06.Cells(rowIdx06 + 7, 20).Value
+                            End If
+                            
+                        Else
+                            ' 情况C：工时不超过阈值，直接累加
+                            ws06.Cells(rowIdx06 + 5, 21).Value = hours01 + accum06
+                            arr06(rowIdx06, 21) = hours01 + accum06
+                            ws01.Cells(rowIdx01, 26).Value = ws06.Cells(rowIdx06 + 5, 20).Value
+                        End If
+                        
+                        Exit For  ' 找到匹配行后退出内层循环
                     End If
-
-                    data06(nextRow, 21) = overflow
-                    label06 = CStr(data06(j, 20)) & " " & CStr(data06(nextRow, 20))
-                    data01(i, 26) = label06
-
-                Else
-                    ' 未超上限，直接累加
-                    data06(j, 21) = newAcc
-                    data01(i, 26) = CStr(data06(j, 20))
-                End If
-
-                Exit For    ' 找到匹配，退出内循环
+                    
+                Next rowIdx06
             End If
-
-        Next j
-
-        ' 进度提示（每1000行显示一次，避免频繁刷新）
-        If i Mod 1000 = 0 Then
-            Application.StatusBar = "处理中：" & i & " / " & UBound(data01, 1) _
-                                     & "  (" & Format(i / UBound(data01, 1), "0%") & ")"
         End If
-
-NextI:
-    Next i
-
-    ' --- 将修改后的数组一次性回写工作表 ---
-    ws01.Range(ws01.Cells(7, 1), ws01.Cells(lastRow01, 26)).Value = data01
-    ws06.Range(ws06.Cells(7, 1), ws06.Cells(lastRow06, 21)).Value = data06
-
-    ' --- 恢复设置 ---
-    Application.StatusBar = False
+    Next rowIdx01
+    
+    ' ===== 恢复 Excel 默认设置 =====
     Application.ScreenUpdating = True
     Application.Calculation = xlCalculationAutomatic
     Application.EnableEvents = True
-
-    MsgBox "处理完成！", vbInformation, "CheckSeq"
+    
+    MsgBox "CheckSeq 执行完成！", vbInformation
 
 End Sub
