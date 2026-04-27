@@ -1,32 +1,27 @@
-Option Explicit
 Dim wbThis As Workbook
 Dim wsThis As Worksheet
 Dim Action_seq As Variant
-Dim ctrl_no, ctrl_lastrow As Long
+Dim ctrl_no, ctrl_lastrow As Integer
 Dim ctrl_err As String
-Dim Cnt_open, Cnt_close As Long
+Dim Cnt_open, Cnt_close As Integer
 Dim ctrl_ws As Variant
-Dim src_arr, tar_arr As String
-Dim Beg as date
-Dim exe_sec As Variant
-Dim input_session As String
+
 
 Sub Combination_main()
 'Main Function
     Application.DisplayAlerts = False
     Application.ScreenUpdating = False
-
     Beg = Now
     
     'Define Control worksheet
     ctrl_ws = Array("Control", "Src", "File", "Cut file", "Email")
     
     'Define workbook & control worksheet
-
+    ThisWorkbook.Activate
     Set wbThis = ThisWorkbook
     Worksheets("Control").Activate
-    Set wsThis = ThisWorkbook.Worksheets("Control")
-    input_session = wsThis.Range("B1").Value
+    Set wsThis = wbThis.ActiveSheet
+    input_session = Range("B1").Value
     
     'Split session start cell for multiple input
     exe_sec = Split(input_session, "|")
@@ -37,10 +32,11 @@ Sub Combination_main()
     Next i
     
     'Show Macro workbook and Control Worksheet
+    wbThis.Activate
     wsThis.Activate
     Application.DisplayAlerts = True
     Application.ScreenUpdating = True
-    wsThis.Range("B1").Select
+    Range("B1").Select
     MsgBox ("Completed. " & vbNewLine & Beg & vbNewLine & Now)
    
 End Sub
@@ -52,16 +48,15 @@ Sub Run_action(exe_sec)
     Get_control (exe_sec)
     
     'Validate Control table input
-    'Validate_Control (exe_sec)
+    Validate_Control (exe_sec)
     
     action_name = Range(exe_sec).Offset(-2, 0).Value
     row_no = Range(exe_sec).Offset(1, 0).Row
     
     'Check action type and call corresponding function
     For i = 1 To ctrl_no
-
     
-        
+        Application.ScreenUpdating = False
         Application.StatusBar = "Processing..." & action_name & " Step " & i & " - Row_" & row_no & "_" & Action_seq(i, 1) & ". Total " & FormatPercent(i / ctrl_no) & " Completed."
         row_no = row_no + 1
         If (UCase(Trim(Action_seq(i, 1))) = "CLEAR_DATA") Then
@@ -72,7 +67,7 @@ Sub Run_action(exe_sec)
             'parameter(wkbk, wksheet, ind_row, header_row, formula_row, start_row)
             Call Copy_Formula(Action_seq(i, 2), Action_seq(i, 3), Action_seq(i, 4), Action_seq(i, 6), Action_seq(i, 5), Action_seq(i, 7))
             
-        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "OPEN_FILE", vbTextCompare) > 0 Then
+        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "OPEN_FILE", vbTectCompare) > 0 Then
             
             If InStr(1, UCase(Trim(Action_seq(i, 1))), "EDIT", vbTextCompare) > 0 Then
                 'parameter(src_path, src_bk, open_type)
@@ -84,7 +79,7 @@ Sub Run_action(exe_sec)
                 
             End If
             
-        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "CLOSE_FILE", vbTextCompare) > 0 Then
+        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "CLOSE_FILE", vbTectCompare) > 0 Then
             
             If InStr(1, UCase(Trim(Action_seq(i, 1))), "SAVE AS", vbTextCompare) > 0 Then
                 'parameter(output_path, output_bk, close_type)
@@ -173,7 +168,7 @@ Sub Run_action(exe_sec)
             'parameter(src_path, wksheet)
             Call List_all_files_subfolders(Action_seq(i, 12), "File")
         
-        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "MOVE_FILE", vbTextCompare) > 0 Then
+        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "MOVE_FILE", vbTectCompare) > 0 Then
         
             If InStr(1, UCase(Trim(Action_seq(i, 1))), "OVERWRITE", vbTextCompare) > 0 Then
                 'parameter(src_path, src_bk, output_path, move_type)
@@ -185,7 +180,7 @@ Sub Run_action(exe_sec)
                 
             End If
         
-        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "COPY_FILE", vbTextCompare) > 0 Then
+        ElseIf InStr(1, UCase(Trim(Action_seq(i, 1))), "COPY_FILE", vbTectCompare) > 0 Then
 
             If InStr(1, UCase(Trim(Action_seq(i, 1))), "OVERWRITE", vbTextCompare) > 0 Then
                 'parameter(src_path, src_bk, output_path, copy_type)
@@ -290,12 +285,12 @@ Sub Run_action(exe_sec)
             Call Copy_sheetdata(Action_seq(i, 2), Action_seq(i, 3), Action_seq(i, 12), Action_seq(i, 13), Action_seq(i, 14), Action_seq(i, 15), Action_seq(i, 17))
             
         End If
-        Application.StatusBar = "Completed..." & action_name & " Step " & i & " - Row_" & row_no & "_" & Action_seq(i, 1) & ". Total " & FormatPercent(i / ctrl_no) & " Completed."
+        Application.StatusBar = "Processing...Step " & i & " - " & Action_seq(i, 1) & ". Total " & FormatPercent(i / ctrl_no) & " Completed."
         'DoEvents
     Next i
 
     Application.StatusBar = False
-
+    Application.ScreenUpdating = True
 End Sub
 
 
@@ -310,7 +305,7 @@ Sub Get_control(ctrl_start)
     
     'Loop Control Table data into an array
     ReDim Action_seq(ctrl_no, ctrl_lastcol)
-    Dim i As Single
+    Dim i As Integer
     
     For i = 1 To ctrl_no
         Range(ctrl_start).Offset(i, 0).Select
@@ -334,7 +329,7 @@ Sub Clear_Data(wkbk, wksheet, header_row, start_row)
 'For worksheet with pivot table, it will clear those columns does not belongs to a pivot
     
     'Use current workbook if user input is blank
-    Dim i As Single
+    Dim i As Integer
     
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -374,7 +369,7 @@ Sub Copy_Formula(wkbk, wksheet, ind_row, header_row, formula_row, start_row)
 
     'Use current workbook if user input is blank
     
-    Dim i As Single
+    Dim i As Integer
     
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -409,7 +404,6 @@ Sub Copy_Formula(wkbk, wksheet, ind_row, header_row, formula_row, start_row)
     For i = 1 To last_col
         If Selection.MergeCells = False Then
             If UCase(Selection.Value) = "FORMULA" Then
-                            
                 Cells(formula_row, Selection.Column).Copy
                 Range(Cells(start_row, Selection.Column), Cells(last_row, Selection.Column)).PasteSpecial xlPasteFormulasAndNumberFormats
                 Call Unfilter(wkbk, wksheet)
@@ -504,9 +498,11 @@ Sub Append_All(wkbk, wksheet, ind_row, header_row, add_srctext, src_path, src_bk
 '      Please make sure the columns are same as the source data
 
     'Skip this step if user input N/A in source workbook
-    Dim i As Single
+    Dim i As Integer
     
-    If src_bk = "N/A" Then Exit Sub
+    If src_bk = "N/A" Then
+       Exit Sub
+    End If
 
     'Use current workbook if user input is blank
     If wkbk = "" Then
@@ -555,16 +551,12 @@ Sub Append_All(wkbk, wksheet, ind_row, header_row, add_srctext, src_path, src_bk
             src_last_row = last_row_check(src_header_row)
 
             If src_last_row >= src_data_row Then
-                src_arr = Range(Cells(src_data_row, src_data_col), src_last_cell).value
-'                Range(Cells(src_data_row, src_data_col), src_last_cell).Select                
-'                Copy and paste as value
-'                Selection.Copy
+                Range(Cells(src_data_row, src_data_col), src_last_cell).Select
+                
+                'Copy and paste as value
+                Selection.Copy
                 Workbooks(wkbk).Worksheets(wksheet).Activate
-                
-                
-                tar_cell = Range(src_last_cell).Offset(last_row - 1, 0).Address
-                Range(Cells(last_row + 1, i), tar_cell) = src_arr
-'                ActiveCell.PasteSpecial xlPasteValuesAndNumberFormats
+                ActiveCell.PasteSpecial xlPasteValuesAndNumberFormats
                 Application.CutCopyMode = False
                 
                 'Give source remark,source from which path, files, worksheet base on text in Control Column J ->"Add fixed text/pw"
@@ -600,7 +592,7 @@ Sub Append_by_Col_Name(wkbk, wksheet, header_row, add_srctext, src_path, src_bk,
 'To check and copy columns with same name to designated worksheet
     
     'Skip this step if user input N/A in source workbook
-    Dim i, j As Long
+    Dim i, j As Integer
     If src_bk = "N/A" Then
        Exit Sub
     End If
@@ -690,7 +682,7 @@ Sub Refresh_Pivot(wkbk, wksheet)
 
     Dim PT As PivotTable
     Dim ws As Worksheet
-    Dim i As Single
+    Dim i As Integer
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -732,7 +724,7 @@ Sub Filter(wkbk, wksheet, header_row, filter_by)
 'Filter based on user requested column & values
 
     'Use current workbook if user input is blank
-    Dim i, j As Long
+    Dim i, j As Integer
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -782,7 +774,7 @@ Sub Sorting(wkbk, wksheet, header_row, sort_by)
 'Sort based on user requested column & order
 
     'Use current workbook if user input is blank
-    Dim i As Single
+    Dim i As Integer
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -845,7 +837,7 @@ Sub Unfilter(wkbk, wksheet)
 'Unfilter the data
 
     'Use current workbook if user input is blank
-    Dim i As Single
+    Dim i As Integer
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -903,7 +895,7 @@ Sub add_text(wkbk, wksheet, header_row, start_row, text_to_add)
 'To add fixed text to a filtered cell
 
     'Use current workbook if user input is blank
-    Dim i As Single
+    Dim i As Integer
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -944,7 +936,7 @@ Sub Delete_Col_Row(wkbk, wksheet, del_by)
 'To delete specified rows and columns
 
     'Use current workbook if user input is blank
-    Dim i, j As Long
+    Dim i, j As Integer
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -991,8 +983,8 @@ End Sub
 
 Sub Copy_Sheet(src_path, src_bk, src_sheet, output_path, output_bk)
 'Copy sheet base on control table information
-
-    Dim i As Single
+    Application.DisplayAlerts = False
+    Dim i As Integer
     'Check if source workbook name is blank
     If src_bk = "" Then
         src_bk = ActiveWorkbook.Name
@@ -1043,7 +1035,7 @@ End Sub
 
 
 Sub Delete_sheet(wk_bk, del_by)
-    Dim i As Single
+    Dim i As Integer
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -1062,9 +1054,9 @@ Sub Delete_sheet(wk_bk, del_by)
 End Sub
 
 Sub Cut_File()
-
-    Dim i, j, k As Long
-
+    Application.DisplayAlerts = False
+    Dim i, j, k As Integer
+    'Application.ScreenUpdating = False
     criteria_first_col = 9
     
     If wbThis Is Nothing Then
@@ -1239,7 +1231,7 @@ Sub List_subfolder(src_path, wksheet)
     Dim objFSO As Object
     Dim objFolder As Object
     Dim objSubFolder As Object
-    Dim i As Single
+    Dim i As Integer
     
     'Create an instance of the FileSystemObject
     Set objFSO = CreateObject("Scripting.FileSystemObject")
@@ -1265,7 +1257,7 @@ Sub List_all_files_subfolders(src_path, wksheet)
     Dim objFSO As Object
     Dim objFolder As Object
     Dim objSubFolder As Object
-    Dim i As Single
+    Dim i As Integer
     
     'Create an instance of the FileSystemObject
     Set objFSO = CreateObject("Scripting.FileSystemObject")
@@ -1433,21 +1425,21 @@ End Sub
 Sub DelBlankSheet(wkbk)
 'To delete blank sheet
 
-
+    'Application.DisplayAlerts = False
     Workbooks(wkbk).Activate
     For Each sheet In ActiveWorkbook.Sheets
         If Application.CountA(sheet.UsedRange.Cells) = 0 Then
             sheet.Delete
         End If
     Next
-
+    'Application.DisplayAlerts = True
 
 End Sub
 
 
 Sub Paste_cell_as_value(wkbk, wksheet, paste_row, paste_col)
 'To copy specific range and paste as value
-    Dim i As Single
+    Dim i As Integer
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -1524,7 +1516,7 @@ End Sub
 
 Sub Paste_sheet_as_value(wkbk, wksheet)
 'To copy the whole sheet and paste as value
-    Dim i As Single
+    Dim i As Integer
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -1565,9 +1557,10 @@ End Sub
 
 
 Sub Send_Email(header_row)
-
+    Application.DisplayAlerts = False
+    'Application.ScreenUpdating = False
     'criteria_first_col = 5
-    Dim i, j As Long
+    Dim i, j As Integer
     If wbThis Is Nothing Then
         Set wbThis = ThisWorkbook
     End If
@@ -1621,7 +1614,7 @@ End Sub
 
 Sub Expand_group(wkbk, wksheet)
 'To show gourped columns / rows
-    Dim i As Single
+    Dim i As Integer
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -1662,7 +1655,7 @@ End Sub
 
 Sub Collapse_group(wkbk, wksheet)
 'To show gourped columns / rows
-    Dim i As Single
+    Dim i As Integer
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -1703,7 +1696,7 @@ End Sub
 
 Sub Protect_sheet(wkbk, wksheet, pw)
 'To protect worksheet with Or without pw
-    Dim i As Single
+    Dim i As Integer
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -1742,7 +1735,7 @@ End Sub
 
 Sub Unprotect_sheet(wkbk, wksheet, pw)
 'To unprotect worksheet with Or without pw
-    Dim i As Single
+    Dim i As Integer
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -1825,7 +1818,7 @@ End Sub
 
 Sub Change_dot_to_slash(wkbk, wksheet, header_row, start_row, dot_col)
 'Change all dot to slash for specified column
-    Dim i, j As Long
+    Dim i, j As Integer
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
     End If
@@ -1967,7 +1960,7 @@ Function check_pivot_range(ByVal pivot_range As String) As String
     '     3) If header only, select one more row for pivot
     
     Dim mystr, str1, str2, final_str, sheet, Cell_1, Cell_2 As String
-    Dim i, j As Long
+    Dim i, j As Integer
      
     
     sheet = Left(pivot_range, InStr(pivot_range, "!"))
@@ -1992,7 +1985,7 @@ End Function
 
 Sub Filter_Period(wkbk, wksheet, header_row, filter_by)
 'Filter based on user requested column & values
-    Dim i, j As Long
+    Dim i, j As Integer
     'Use current workbook if user input is blank
     If wkbk = "" Then
         wkbk = ThisWorkbook.Name
@@ -2045,7 +2038,7 @@ Sub Append_All_notCloseFile(wkbk, wksheet, ind_row, header_row, add_srctext, src
 'Using "Source_Start" as an indicator to append all source data to working worksheet
 'Note: This function does not check the column name.
 '      Please make sure the columns are same as the source data
-    Dim i As Single
+    Dim i As Integer
     'Skip this step if user input N/A in source workbook
     If src_bk = "N/A" Then
        Exit Sub
@@ -2130,7 +2123,7 @@ End Sub
 
 Sub Append_by_Col_Name_notCloseFile(wkbk, wksheet, header_row, add_srctext, src_path, src_bk, src_sheet, src_header_row, src_data_row, src_data_col)
 'To check and copy columns with same name to designated worksheet
-    Dim i, j As Long
+    Dim i, j As Integer
     'Skip this step if user input N/A in source workbook
     If src_bk = "N/A" Then
        Exit Sub
@@ -2210,7 +2203,7 @@ Sub Append_by_Col_Name_notCloseFile(wkbk, wksheet, header_row, add_srctext, src_
 End Sub
 
 Sub Change_text(wkbk, wksheet, header_row, start_row, text_to_change)
-    Dim i As Single
+    Dim i As Integer
     Application.Calculation = xlAutomatic
 'To add fixed text to a filtered cell
 
@@ -2251,8 +2244,8 @@ End Sub
 
 Sub Append_in_Same_Line(wkbk, wksheet, ind_row, header_row, start_row, src_path, src_bk, src_sheet, src_header_row, src_data_row, src_data_col)
     
-
-    Dim i, j As Long
+    Application.DisplayAlerts = False
+    Dim i, j As Integer
 'To check and copy columns with same name to designated worksheet
     
     'Skip this step if user input N/A in source workbook
@@ -2338,7 +2331,7 @@ End Sub
 Sub Remove_Duplicate(wkbk, wksheet, header_row, filter_by)
     'To Remove specific range duplicate records
     
-    Dim i, j As Long
+    Dim i, j As Integer
     Dim myCol() As Variant
        
     'Use current workbook if user input is blank
@@ -2605,7 +2598,7 @@ End Sub
 
 Sub Copy_sheetdata(wkbk, wksheet, src_path, src_bk, src_sheet, src_header_row, src_data_col)
 
-
+    Application.DisplayAlerts = False
     
 'To check and copy columns with same name to designated worksheet
     
